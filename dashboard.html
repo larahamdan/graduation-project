@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | CareerPath AI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header class="dashboard-header">
+        <a class="brand" href="index.html">
+            <span class="brand-icon">C</span>
+            <span>CareerPath <strong>AI</strong></span>
+        </a>
+
+        <nav class="dashboard-nav">
+            <a class="active" href="dashboard.html">Dashboard</a>
+            <a href="upload.html">Upload CV</a>
+            <a href="index.html">Home</a>
+        </nav>
+
+        <a class="profile-link" href="login.html">Sign in</a>
+    </header>
+
+    <main class="dashboard-main">
+        <section class="welcome-section">
+            <div>
+                <span class="eyebrow">YOUR CAREER WORKSPACE</span>
+                <h1>Your career, your next step.</h1>
+                <p>Track your skills and build a plan towards your target role.</p>
+            </div>
+
+            <a class="dashboard-button" href="upload.html">Upload your CV</a>
+        </section>
+
+        <section class="dashboard-stats">
+            <article class="stat-card">
+                <span class="stat-label">Target role</span>
+                <h2>Frontend Developer</h2>
+                <p>Example career goal</p>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-label">Skills identified</span>
+                <h2>—</h2>
+                <p>Waiting for CV analysis</p>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-label">Skill match</span>
+                <h2>—%</h2>
+                <p>Available after analysis</p>
+            </article>
+        </section>
+
+        <section class="dashboard-grid">
+            <article class="dashboard-panel">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Your skills</h2>
+                        <p>Skills will appear after your CV is analysed.</p>
+                    </div>
+                    <span class="panel-icon">✦</span>
+                </div>
+
+                <div class="empty-state">
+                    <div class="empty-icon">◎</div>
+                    <h3>Your skills profile starts here</h3>
+                    <p>Upload your CV to identify your current skills and areas to improve.</p>
+                    <a href="upload.html">Analyse my CV →</a>
+                </div>
+            </article>
+
+            <article class="dashboard-panel">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Skill gaps</h2>
+                        <p>Discover what you need to learn next.</p>
+                    </div>
+                    <span class="panel-icon">↗</span>
+                </div>
+
+                <div class="empty-state">
+                    <div class="empty-icon">⌁</div>
+                    <h3>Find your next learning goal</h3>
+                    <p>CareerPath AI will compare your skills with your chosen role.</p>
+                    <a href="upload.html">Get started →</a>
+                </div>
+            </article>
+
+            <article class="dashboard-panel roadmap-panel">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Your learning roadmap</h2>
+                        <p>A step-by-step plan towards your career goal.</p>
+                    </div>
+                    <span class="panel-icon">☷</span>
+                </div>
+
+                <div class="roadmap-steps">
+                    <div class="roadmap-step">
+                        <span class="step-number">1</span>
+                        <div>
+                            <h3>Upload your CV</h3>
+                            <p>Start with your existing skills and experience.</p>
+                        </div>
+                        <span class="step-status">Start here</span>
+                    </div>
+
+                    <div class="roadmap-step">
+                        <span class="step-number">2</span>
+                        <div>
+                            <h3>Identify skill gaps</h3>
+                            <p>Understand which skills need improvement.</p>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-step">
+                        <span class="step-number">3</span>
+                        <div>
+                            <h3>Follow your plan</h3>
+                            <p>Work through recommended learning activities.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="roadmap-link" href="upload.html">Build my roadmap →</a>
+            </article>
+        </section>
+
+        <p class="dashboard-note">
+            Demo dashboard: the figures and career recommendations are placeholders
+            until the backend and AI analysis are connected.
+        </p>
+    </main>
+
+    <footer class="auth-footer">
+        <p>© 2026 CareerPath AI. Helping students plan their next step.</p>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | CareerPath AI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <header class="auth-header">
+        <a class="brand" href="index.html">
+            <span class="brand-icon">C</span>
+            <span>CareerPath <strong>AI</strong></span>
+        </a>
+        <a class="back-link" href="index.html">← Back to home</a>
+    </header>
+
+    <main class="auth-layout">
+        <section class="auth-intro">
+            <span class="eyebrow">YOUR CAREER STARTS HERE</span>
+            <h1>Build a career plan that moves you forward.</h1>
+            <p>Create your account to explore your skills, identify career gaps and plan your next steps with CareerPath AI.</p>
+
+            <div class="benefit-list">
+                <p><span>✓</span> Understand your current skills</p>
+                <p><span>✓</span> Discover skills your target role requires</p>
+                <p><span>✓</span> Work towards your career goals</p>
+            </div>
+        </section>
+
+        <section class="auth-card">
+            <div class="auth-card-heading">
+                <h2>Create your account</h2>
+                <p>Enter your details to get started.</p>
+            </div>
+
+            <form id="registerForm">
+                <div class="form-field">
+                    <label for="fullName">Full name</label>
+                    <input id="fullName" name="fullName" type="text"
+                        placeholder="Enter your full name" required minlength="2">
+                </div>
+
+                <div class="form-field">
+                    <label for="email">University email</label>
+                    <input id="email" name="email" type="email"
+                        placeholder="you@example.com" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="studyLevel">Current study level</label>
+                    <select id="studyLevel" name="studyLevel" required>
+                        <option value="">Select your study level</option>
+                        <option value="undergraduate">Undergraduate</option>
+                        <option value="postgraduate">Postgraduate</option>
+                        <option value="graduate">Recent graduate</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password"
+                        placeholder="At least 8 characters" minlength="8" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="confirmPassword">Confirm password</label>
+                    <input id="confirmPassword" name="confirmPassword"
+                        type="password" placeholder="Enter your password again"
+                        minlength="8" required>
+                </div>
+
+                <label class="terms-option">
+                    <input id="terms" name="terms" type="checkbox" required>
+                    <span>I agree to the terms of use and privacy policy.</span>
+                </label>
+
+                <p id="formMessage" class="form-message" role="status"></p>
+
+                <button class="auth-button" type="submit">Create account</button>
+            </form>
+
+            <p class="auth-switch">
+                Already have an account? <a href="login.html">Sign in</a>
+            </p>
+
+            <p class="demo-notice">
+                Preview only — account creation is not connected yet.
+            </p>
+        </section>
+    </main>
+
+    <footer class="auth-footer">
+        <p>© 2026 CareerPath AI. Helping students plan their next step.</p>
+    </footer>
+
+    <script src="register.js"></script>
+</body>
+</html>

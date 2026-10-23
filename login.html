@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | CareerPath AI</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header class="auth-header">
+        <a class="brand" href="index.html">
+            <span class="brand-icon">C</span>
+            <span>CareerPath <strong>AI</strong></span>
+        </a>
+
+        <a class="back-link" href="index.html">← Back to home</a>
+    </header>
+
+    <main class="login-layout">
+        <section class="login-intro">
+            <span class="eyebrow">WELCOME BACK</span>
+
+            <h1>Your next career step starts here.</h1>
+
+            <p>
+                Sign in to continue your journey with CareerPath AI.
+                Review your skills, explore your career goals and
+                keep working towards your future.
+            </p>
+
+            <div class="login-highlight">
+                <span class="highlight-icon">✦</span>
+                <div>
+                    <h3>Your goals. Your skills. Your future.</h3>
+                    <p>A clearer path towards the career you want.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="login-card">
+            <div class="login-heading">
+                <h2>Welcome back</h2>
+                <p>Enter your details to sign in to your account.</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-field">
+                    <label for="email">University email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <p id="loginMessage" class="form-message" role="status"></p>
+
+                <button class="auth-button" type="submit">
+                    Sign in
+                </button>
+            </form>
+
+            <p class="login-switch">
+                Don't have an account?
+                <a href="register.html">Create an account</a>
+            </p>
+
+            <p class="demo-notice">
+                Preview only — sign-in is not connected to the backend yet.
+            </p>
+        </section>
+    </main>
+
+    <footer class="auth-footer">
+        <p>© 2026 CareerPath AI. Helping students plan their next step.</p>
+    </footer>
+
+    <script src="login.js"></script>
+</body>
+</html>
