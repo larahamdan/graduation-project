@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Started | CareerPath AI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="upload.css">
+  <script src="upload.js" defer></script>
+</head>
+
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <span>✳</span> CareerPath <b>AI</b>
+    </a>
+    <a href="index.html" class="back-link">← Back to home</a>
+  </header>
+
+  <main class="page">
+    <div class="intro">
+      <span class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</span>
+      <h1>Let's figure out <span>your next move.</span></h1>
+      <p>
+        No pressure. No need to have your entire life figured out.
+        Just tell us a little about where you're headed. 💗
+      </p>
+    </div>
+
+    <div class="form-layout">
+      <section class="form-card">
+        <div class="step-label"><span>01</span> &nbsp; YOUR CAREER GOALS</div>
+        <h2>First things first.</h2>
+        <p class="subtext">What kind of future are we working towards?</p>
+
+        <form id="careerForm">
+          <label for="studentName">What should we call you?</label>
+          <input
+            type="text"
+            id="studentName"
+            name="studentName"
+            placeholder="Your first name"
+            autocomplete="given-name"
+            required
+          >
+
+          <label for="careerRole">What's your dream role?</label>
+          <select id="careerRole" name="careerRole" required>
+            <option value="">Choose your career path</option>
+            <option value="Frontend Developer">Frontend Developer</option>
+            <option value="Backend Developer">Backend Developer</option>
+            <option value="Full Stack Developer">Full Stack Developer</option>
+            <option value="Data Analyst">Data Analyst</option>
+            <option value="Data Scientist">Data Scientist</option>
+            <option value="Cybersecurity Engineer">Cybersecurity Engineer</option>
+            <option value="UI/UX Designer">UI/UX Designer</option>
+            <option value="Software Engineer">Software Engineer</option>
+            <option value="Product Manager">Product Manager</option>
+            <option value="Other">I'm still exploring 👀</option>
+          </select>
+
+          <label for="experience">Where are you in your journey?</label>
+          <select id="experience" name="experience" required>
+            <option value="">Choose your current level</option>
+            <option value="Beginner">Just starting out</option>
+            <option value="Intermediate">I know a few things</option>
+            <option value="Advanced">I've got some experience</option>
+          </select>
+
+          <div class="step-label upload-step">
+            <span>02</span> &nbsp; YOUR CV
+          </div>
+
+          <h2>Show us what you've got.</h2>
+          <p class="subtext">
+            No CV yet? Don't panic. We all start somewhere.
+          </p>
+
+          <label class="upload-area" for="cvFile" id="uploadArea">
+            <span class="upload-icon">↑</span>
+            <strong>Drop your CV here or browse</strong>
+            <span class="upload-hint">PDF or DOCX · Maximum 5 MB</span>
+            <input
+              type="file"
+              id="cvFile"
+              name="cvFile"
+              accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            >
+          </label>
+
+          <p class="file-message" id="fileMessage" aria-live="polite">
+            Your CV is only selected in this demo. It isn't uploaded to a server yet.
+          </p>
+
+          <label class="consent">
+            <input type="checkbox" id="consent" required>
+            <span>
+              I understand my CV contains personal information and agree
+              to use it for my career-planning analysis.
+            </span>
+          </label>
+
+          <button type="submit" class="submit-button">
+            Build my career roadmap <span>→</span>
+          </button>
+
+          <p class="privacy-note">♡ Your career journey should feel like yours.</p>
+          <p class="form-message" id="formMessage" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <aside class="side-panel">
+        <div class="side-icon">✳</div>
+        <span class="eyebrow">A LITTLE REMINDER</span>
+        <h2>You don't need to know everything.</h2>
+        <p>
+          You just need to know what to work on next. That's where we come in.
+        </p>
+
+        <div class="side-divider"></div>
+
+        <div class="benefit">
+          <span>✓</span>
+          <div>
+            <strong>Understand your strengths</strong>
+            <p>See what you already bring to the table.</p>
+          </div>
+        </div>
+
+        <div class="benefit">
+          <span>✓</span>
+          <div>
+            <strong>Spot your skill gaps</strong>
+            <p>Know which skills your target role requires.</p>
+          </div>
+        </div>
+
+        <div class="benefit">
+          <span>✓</span>
+          <div>
+            <strong>Get a plan that makes sense</strong>
+            <p>Focus on achievable next steps, not 37 open tabs.</p>
+          </div>
+        </div>
+
+        <div class="side-note">
+          “I'm just a student” is not the end of your story. 💗
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <a href="index.html">← Back to CareerPath AI</a>
+    <span>One step at a time. You've got this.</span>
+  </footer>
+</body>
+</html>
