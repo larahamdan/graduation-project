@@ -19,7 +19,11 @@ if (registerForm && formMessage) {
         }
 
         formMessage.textContent =
-            "Your form is valid! Account creation will be available when the backend is connected.";
+            "Demo mode: your form is valid! Opening the login page...";
         formMessage.classList.add("success");
+
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 1200);
     });
 }

@@ -8,7 +8,12 @@ if (loginForm && loginMessage) {
 
         loginMessage.className = "form-message";
         loginMessage.textContent =
-            "Sign-in is not available yet. The backend needs to be connected.";
-        loginMessage.classList.add("error");
+            "Demo mode: sign-in is not connected yet. Opening the dashboard preview...";
+        loginMessage.classList.remove("error");
+        loginMessage.classList.add("success");
+
+        setTimeout(() => {
+            window.location.href = "dashboard.html";
+        }, 1200);
     });
 }

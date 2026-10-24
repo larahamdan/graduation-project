@@ -333,3 +333,213 @@
         font-size: 10px;
     }
 }
+
+/* Dashboard skill cards */
+
+#dashboardSkills {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.dashboard-skill-item {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--background);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.dashboard-skill-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.dashboard-skill-item h3 {
+    margin: 0 0 9px;
+    color: var(--primary);
+    font-size: 15px;
+}
+
+.dashboard-skill-item p {
+    margin: 0 0 12px;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.dashboard-skill-item span {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: var(--secondary);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Keep long career names and filenames tidy */
+
+.stat-card h2 {
+    overflow-wrap: anywhere;
+    line-height: 1.4;
+}
+
+#cvFileName {
+    overflow-wrap: anywhere;
+}
+
+/* Skill match card */
+
+.skill-match-value {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 13px 0 16px;
+}
+
+.skill-match-value h2 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.match-badge {
+    padding: 6px 9px;
+    border-radius: 20px;
+    background: var(--secondary);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.match-progress-track {
+    width: 100%;
+    height: 8px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--secondary);
+    margin-bottom: 13px;
+}
+
+.match-progress-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--primary);
+    transition: width 0.4s ease;
+}
+
+/* Suggested skill gaps */
+
+.dashboard-skill-gaps {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.skill-gap-item {
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--background);
+}
+
+.skill-gap-item h3 {
+    margin: 0 0 7px;
+    color: var(--primary);
+    font-size: 14px;
+}
+
+.skill-gap-item p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.skill-gap-label {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: var(--secondary);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Learning roadmap progress */
+
+.learning-progress {
+    margin-top: 25px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--background);
+}
+
+.progress-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: var(--text);
+    font-size: 13px;
+}
+
+.progress-summary strong {
+    color: var(--primary);
+}
+
+.learning-progress-track {
+    height: 9px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--secondary);
+}
+
+.learning-progress-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.progress-help {
+    margin: 10px 0 0;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* Interactive roadmap steps */
+
+.roadmap-step-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.roadmap-checkbox {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.roadmap-step.completed .step-number {
+    background: var(--primary);
+    color: #FFFFFF;
+}
+
+.roadmap-step.completed h3 {
+    color: var(--text-muted);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+}

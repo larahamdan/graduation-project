@@ -31,28 +31,48 @@
                 <h1>Your career, your next step.</h1>
                 <p>Track your skills and build a plan towards your target role.</p>
             </div>
-
             <a class="dashboard-button" href="upload.html">Upload your CV</a>
         </section>
 
         <section class="dashboard-stats">
-            <article class="stat-card">
-                <span class="stat-label">Target role</span>
-                <h2>Frontend Developer</h2>
-                <p>Example career goal</p>
-            </article>
+           
+<article class="stat-card">
+    <span class="stat-label">Target role</span>
+    <h2 id="targetRole">Frontend Developer</h2>
+    <p id="targetRoleDescription">Example career goal</p>
+</article>
+
 
             <article class="stat-card">
-                <span class="stat-label">Skills identified</span>
-                <h2>—</h2>
-                <p>Waiting for CV analysis</p>
+                <span class="stat-label">Your latest CV</span>
+                <h2 id="cvFileName">No CV selected</h2>
+                <p id="cvFileStatus">Upload your CV to get started</p>
             </article>
 
-            <article class="stat-card">
-                <span class="stat-label">Skill match</span>
-                <h2>—%</h2>
-                <p>Available after analysis</p>
-            </article>
+<article class="stat-card skill-match-card">
+    <span class="stat-label">Skill match</span>
+
+    <div class="skill-match-value">
+        <h2 id="skillMatchValue">—</h2>
+        <span class="match-badge">AI analysis pending</span>
+    </div>
+
+    <div
+        class="match-progress-track"
+        role="progressbar"
+        aria-label="Skill match analysis progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+    >
+        <div class="match-progress-fill" id="skillMatchProgress"></div>
+    </div>
+
+    <p id="skillMatchDescription">
+        Your match score will appear after your CV is analysed.
+    </p>
+</article>
+
         </section>
 
         <section class="dashboard-grid">
@@ -60,35 +80,41 @@
                 <div class="panel-heading">
                     <div>
                         <h2>Your skills</h2>
-                        <p>Skills will appear after your CV is analysed.</p>
+                        <p>Suggested skills for your selected career.</p>
                     </div>
                     <span class="panel-icon">✦</span>
                 </div>
 
-                <div class="empty-state">
-                    <div class="empty-icon">◎</div>
-                    <h3>Your skills profile starts here</h3>
-                    <p>Upload your CV to identify your current skills and areas to improve.</p>
-                    <a href="upload.html">Analyse my CV →</a>
-                </div>
-            </article>
-
-            <article class="dashboard-panel">
-                <div class="panel-heading">
-                    <div>
-                        <h2>Skill gaps</h2>
-                        <p>Discover what you need to learn next.</p>
+                <div id="dashboardSkills" class="dashboard-skill-list">
+                    <div class="empty-state">
+                        <div class="empty-icon">◎</div>
+                        <h3>Your skills profile starts here</h3>
+                        <p>Select a career to explore the skills you'll need to develop.</p>
+                        <a href="upload.html">Choose a career →</a>
                     </div>
-                    <span class="panel-icon">↗</span>
-                </div>
-
-                <div class="empty-state">
-                    <div class="empty-icon">⌁</div>
-                    <h3>Find your next learning goal</h3>
-                    <p>CareerPath AI will compare your skills with your chosen role.</p>
-                    <a href="upload.html">Get started →</a>
                 </div>
             </article>
+
+          
+<article class="dashboard-panel">
+    <div class="panel-heading">
+        <div>
+            <h2>Skill gaps</h2>
+            <p>Suggested areas to develop for your target career.</p>
+        </div>
+        <span class="panel-icon">↗</span>
+    </div>
+
+    <div id="dashboardSkillGaps" class="dashboard-skill-gaps">
+        <div class="empty-state">
+            <div class="empty-icon">⌁</div>
+            <h3>Your development plan starts here</h3>
+            <p>Choose a career to see suggested areas to work on. These are general suggestions, not results from CV analysis.</p>
+            <a href="upload.html">Choose a career →</a>
+        </div>
+    </div>
+</article>
+
 
             <article class="dashboard-panel roadmap-panel">
                 <div class="panel-heading">
@@ -99,12 +125,36 @@
                     <span class="panel-icon">☷</span>
                 </div>
 
-                <div class="roadmap-steps">
+<div class="learning-progress">
+    <div class="progress-summary">
+        <span>Roadmap progress</span>
+        <strong id="roadmapProgressText">0% complete</strong>
+    </div>
+
+    <div
+        class="learning-progress-track"
+        role="progressbar"
+        aria-label="Learning roadmap progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+        id="roadmapProgressBar"
+    >
+        <div id="roadmapProgressFill" class="learning-progress-fill"></div>
+    </div>
+
+    <p class="progress-help" id="roadmapProgressHelp">
+        Complete a learning step to start tracking your progress.
+    </p>
+</div>
+
+
+                <div class="roadmap-steps" id="dashboardRoadmap">
                     <div class="roadmap-step">
                         <span class="step-number">1</span>
                         <div>
-                            <h3>Upload your CV</h3>
-                            <p>Start with your existing skills and experience.</p>
+                            <h3>Choose your career</h3>
+                            <p>Select a target role to explore suggested learning steps.</p>
                         </div>
                         <span class="step-status">Start here</span>
                     </div>
@@ -112,16 +162,16 @@
                     <div class="roadmap-step">
                         <span class="step-number">2</span>
                         <div>
-                            <h3>Identify skill gaps</h3>
-                            <p>Understand which skills need improvement.</p>
+                            <h3>Develop relevant skills</h3>
+                            <p>Practise the core skills used in your chosen field.</p>
                         </div>
                     </div>
 
                     <div class="roadmap-step">
                         <span class="step-number">3</span>
                         <div>
-                            <h3>Follow your plan</h3>
-                            <p>Work through recommended learning activities.</p>
+                            <h3>Build your portfolio</h3>
+                            <p>Complete a practical project and document what you've learned.</p>
                         </div>
                     </div>
                 </div>
@@ -131,8 +181,8 @@
         </section>
 
         <p class="dashboard-note">
-            Demo dashboard: the figures and career recommendations are placeholders
-            until the backend and AI analysis are connected.
+            CareerPath AI currently provides suggested learning plans.
+            Personalised skill-gap results require the backend and AI analysis to be connected.
         </p>
     </main>
 
