@@ -21,6 +21,21 @@ DATABASE_URL = URL.create(
 
 # Create the database engine
 engine = create_engine(DATABASE_URL)
+from sqlalchemy.orm import sessionmaker
+
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine
+)
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
 # Test whether PostgreSQL is connected
