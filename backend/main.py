@@ -1,13 +1,25 @@
-from auth import router as auth_router
-
 from fastapi import FastAPI, HTTPException, Depends
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
+from auth import router as auth_router, get_current_user
 from database import get_db
-from models import Student
+from models import Student, User
+
 
 app = FastAPI(title="CareerPath AI")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://127.0.0.1:5500",
+        "http://localhost:5500"
+    ],
+    allow_credentials=False,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type", "Authorization"]
+)
+
 app.include_router(auth_router)
 
 
@@ -30,12 +42,28 @@ def home():
 
 
 # Create a student and save to PostgreSQL
+
+# Create a student profile for the logged-in user
 @app.post("/students", status_code=201)
 def create_student(
     student: StudentProfile,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
 ):
-    new_student = Student(**student.model_dump())
+    existing_profile = db.query(Student).filter(
+        Student.user_id == current_user.id
+    ).first()
+
+    if existing_profile:
+        raise HTTPException(
+            status_code=409,
+            detail="You already have a student profile"
+        )
+
+    new_student = Student(
+        **student.model_dump(),
+        user_id=current_user.id
+    )
 
     db.add(new_student)
     db.commit()
@@ -44,28 +72,26 @@ def create_student(
     return {
         "message": "Student profile created successfully",
         "student_id": new_student.id,
-        "student": {
-            "name": new_student.name,
-            "major": new_student.major,
-            "skills": new_student.skills,
-            "target_role": new_student.target_role,
-            "weekly_study_hours": new_student.weekly_study_hours
-        }
+        "student": student.model_dump()
     }
 
 
-# Retrieve a student from PostgreSQL
+# Retrieve a student profile belonging to the logged-in user
 @app.get("/students/{student_id}")
 def get_student(
     student_id: int,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
 ):
-    student = db.get(Student, student_id)
+    student = db.query(Student).filter(
+        Student.id == student_id,
+        Student.user_id == current_user.id
+    ).first()
 
     if student is None:
         raise HTTPException(
             status_code=404,
-            detail="Student not found"
+            detail="Student profile not found"
         )
 
     return {

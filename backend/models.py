@@ -1,3 +1,4 @@
+from sqlalchemy import Column, Integer, String, JSON, DateTime, ForeignKey
 
 from datetime import datetime, timezone
 from sqlalchemy import Column, Integer, String, JSON, DateTime
@@ -10,6 +11,12 @@ class Student(Base):
     __tablename__ = "students"
 
     id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(
+    Integer,
+    ForeignKey("users.id"),
+    nullable=True,
+    unique=True
+)
     name = Column(String(100), nullable=False)
     major = Column(String(100), nullable=False)
     skills = Column(JSON, nullable=False)
