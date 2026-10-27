@@ -4,6 +4,8 @@ from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
 from auth import router as auth_router, get_current_user
+from cv import router as cv_router
+
 from database import get_db
 from models import Student, User
 
@@ -21,7 +23,7 @@ app.add_middleware(
 )
 
 app.include_router(auth_router)
-
+app.include_router(cv_router)
 
 # Student information received from the frontend
 class StudentProfile(BaseModel):
