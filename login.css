@@ -1,5 +1,7 @@
 
-/* CareerPath AI — Login Page */
+/* CareerPath AI — Login Page
+   Theme: Blue, White and Light Blue
+*/
 
 .login-layout {
     display: grid;
@@ -35,6 +37,12 @@
     border: 1px solid var(--border);
     border-radius: var(--radius);
     background: var(--surface);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.login-highlight:hover {
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow);
 }
 
 .highlight-icon {
@@ -92,6 +100,20 @@
     display: flex;
     flex-direction: column;
     gap: 22px;
+}
+
+#loginForm input:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(75, 139, 244, 0.15);
+    outline: none;
+}
+
+#loginForm button {
+    transition: background var(--transition), transform var(--transition);
+}
+
+#loginForm button:hover {
+    transform: translateY(-1px);
 }
 
 .login-switch {

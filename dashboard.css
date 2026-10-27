@@ -1,5 +1,26 @@
 
-/* CareerPath AI — Dashboard */
+/* ========================================
+   CareerPath AI — Dashboard
+   Blue & White Theme
+======================================== */
+
+:root {
+    --primary: #163A70;
+    --primary-hover: #24549A;
+    --primary-light: #4B8BF4;
+    --background: #F3F7FC;
+    --surface: #FFFFFF;
+    --secondary: #E5EEFA;
+    --text: #1E293B;
+    --text-muted: #64748B;
+    --border: #D9E4F2;
+
+    --radius: 12px;
+    --shadow: 0 4px 18px rgba(22, 58, 112, 0.07);
+    --transition: 0.2s ease;
+}
+
+/* Header and navigation */
 
 .dashboard-header {
     display: flex;
@@ -11,9 +32,14 @@
     border-bottom: 1px solid var(--border);
 }
 
+.dashboard-header .brand {
+    flex-shrink: 0;
+}
+
 .dashboard-nav {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 25px;
 }
 
@@ -30,7 +56,18 @@
     font-weight: 600;
 }
 
+.dashboard-nav a:focus-visible,
+.profile-link:focus-visible,
+.dashboard-button:focus-visible,
+.roadmap-link:focus-visible,
+.empty-state a:focus-visible {
+    outline: 3px solid var(--primary-light);
+    outline-offset: 4px;
+    border-radius: 5px;
+}
+
 .profile-link {
+    flex-shrink: 0;
     padding: 9px 17px;
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -38,11 +75,14 @@
     font-size: 13px;
     font-weight: 600;
     text-decoration: none;
+    transition: background var(--transition);
 }
 
 .profile-link:hover {
     background: var(--secondary);
 }
+
+/* Main content */
 
 .dashboard-main {
     width: min(1150px, 88%);
@@ -57,6 +97,10 @@
     margin-bottom: 35px;
 }
 
+.welcome-section > div {
+    min-width: 0;
+}
+
 .welcome-section h1 {
     margin: 12px 0;
     color: var(--primary);
@@ -65,6 +109,7 @@
 }
 
 .welcome-section p {
+    max-width: 620px;
     margin: 0;
     color: var(--text-muted);
     line-height: 1.7;
@@ -74,18 +119,25 @@
     display: inline-block;
     flex-shrink: 0;
     padding: 13px 20px;
+    border: 1px solid var(--primary);
     border-radius: 8px;
     background: var(--primary);
-    color: white;
+    color: #FFFFFF;
     font-size: 14px;
     font-weight: 600;
+    text-align: center;
     text-decoration: none;
-    transition: background var(--transition);
+    transition:
+        background var(--transition),
+        transform var(--transition);
 }
 
 .dashboard-button:hover {
     background: var(--primary-hover);
+    transform: translateY(-1px);
 }
+
+/* Overview cards */
 
 .dashboard-stats {
     display: grid;
@@ -95,6 +147,7 @@
 }
 
 .stat-card {
+    min-width: 0;
     padding: 23px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -111,6 +164,7 @@
     margin: 13px 0 8px;
     color: var(--primary);
     font-size: 23px;
+    line-height: 1.4;
     overflow-wrap: anywhere;
 }
 
@@ -118,7 +172,55 @@
     margin: 0;
     color: var(--text-muted);
     font-size: 12px;
+    line-height: 1.6;
 }
+
+#cvFileName {
+    overflow-wrap: anywhere;
+}
+
+/* Skill match card */
+
+.skill-match-value {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 13px 0 16px;
+}
+
+.skill-match-value h2 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.match-badge {
+    padding: 6px 9px;
+    border-radius: 20px;
+    background: var(--secondary);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.match-progress-track {
+    width: 100%;
+    height: 8px;
+    margin-bottom: 13px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--secondary);
+}
+
+.match-progress-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--primary-light);
+    transition: width 0.4s ease;
+}
+
+/* Dashboard panels */
 
 .dashboard-grid {
     display: grid;
@@ -127,6 +229,7 @@
 }
 
 .dashboard-panel {
+    min-width: 0;
     padding: 25px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -136,9 +239,13 @@
 
 .panel-heading {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
+    justify-content: space-between;
     gap: 15px;
+}
+
+.panel-heading > div {
+    min-width: 0;
 }
 
 .panel-heading h2 {
@@ -166,6 +273,8 @@
     color: var(--primary);
     font-size: 22px;
 }
+
+/* Empty states */
 
 .empty-state {
     display: flex;
@@ -215,8 +324,139 @@
     text-decoration: underline;
 }
 
+/* Suggested skills */
+
+#dashboardSkills {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.dashboard-skill-item {
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--background);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.dashboard-skill-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.dashboard-skill-item h3 {
+    margin: 0 0 9px;
+    color: var(--primary);
+    font-size: 15px;
+}
+
+.dashboard-skill-item p {
+    margin: 0 0 12px;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.dashboard-skill-item span,
+.skill-gap-label {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: var(--secondary);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* Suggested development areas */
+
+.dashboard-skill-gaps {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.skill-gap-item {
+    min-width: 0;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--background);
+}
+
+.skill-gap-item h3 {
+    margin: 0 0 7px;
+    color: var(--primary);
+    font-size: 14px;
+}
+
+.skill-gap-item p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.skill-gap-label {
+    margin-top: 10px;
+}
+
+/* Learning roadmap */
+
 .roadmap-panel {
     grid-column: 1 / -1;
+}
+
+.learning-progress {
+    margin-top: 25px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--background);
+}
+
+.progress-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: var(--text);
+    font-size: 13px;
+}
+
+.progress-summary strong {
+    color: var(--primary);
+}
+
+.learning-progress-track {
+    height: 9px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--secondary);
+}
+
+.learning-progress-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--primary-light);
+    transition: width 0.3s ease;
+}
+
+.progress-help {
+    margin: 10px 0 0;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.6;
 }
 
 .roadmap-steps {
@@ -247,10 +487,16 @@
     font-weight: 700;
 }
 
+.roadmap-step-content {
+    flex: 1;
+    min-width: 0;
+}
+
 .roadmap-step h3 {
     margin: 0 0 6px;
     color: var(--text);
     font-size: 14px;
+    line-height: 1.5;
 }
 
 .roadmap-step p {
@@ -260,277 +506,17 @@
     line-height: 1.6;
 }
 
-.step-status {
-    margin-left: auto;
-    padding: 6px 10px;
-    border-radius: 20px;
-    background: var(--secondary);
-    color: var(--primary);
-    font-size: 11px;
-    white-space: nowrap;
-}
-
-.roadmap-link {
-    display: inline-block;
-    margin-top: 20px;
-}
-
-.dashboard-note {
-    margin: 25px 0;
-    color: var(--text-muted);
-    font-size: 12px;
-    line-height: 1.7;
-    text-align: center;
-}
-
-@media (max-width: 850px) {
-    .dashboard-header {
-        flex-wrap: wrap;
-    }
-
-    .dashboard-nav {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        gap: 22px;
-        padding-top: 10px;
-    }
-
-    .dashboard-main {
-        width: 90%;
-        margin: 30px auto;
-    }
-
-    .dashboard-stats {
-        grid-template-columns: 1fr;
-        gap: 14px;
-    }
-}
-
-@media (max-width: 600px) {
-    .welcome-section {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .roadmap-panel {
-        grid-column: auto;
-    }
-
-    .dashboard-panel {
-        padding: 20px;
-    }
-
-    .roadmap-step {
-        align-items: flex-start;
-    }
-
-    .step-status {
-        font-size: 10px;
-    }
-}
-
-/* Dashboard skill cards */
-
-#dashboardSkills {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-    margin-top: 25px;
-}
-
-.dashboard-skill-item {
-    padding: 18px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--background);
-    transition: transform var(--transition), box-shadow var(--transition);
-}
-
-.dashboard-skill-item:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
-}
-
-.dashboard-skill-item h3 {
-    margin: 0 0 9px;
-    color: var(--primary);
-    font-size: 15px;
-}
-
-.dashboard-skill-item p {
-    margin: 0 0 12px;
-    color: var(--text-muted);
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-.dashboard-skill-item span {
-    display: inline-block;
-    padding: 5px 9px;
-    border-radius: 20px;
-    background: var(--secondary);
-    color: var(--primary);
-    font-size: 11px;
-    font-weight: 600;
-}
-
-/* Keep long career names and filenames tidy */
-
-.stat-card h2 {
-    overflow-wrap: anywhere;
-    line-height: 1.4;
-}
-
-#cvFileName {
-    overflow-wrap: anywhere;
-}
-
-/* Skill match card */
-
-.skill-match-value {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 13px 0 16px;
-}
-
-.skill-match-value h2 {
-    margin: 0;
-    font-size: 28px;
-}
-
-.match-badge {
-    padding: 6px 9px;
-    border-radius: 20px;
-    background: var(--secondary);
-    color: var(--primary);
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.match-progress-track {
-    width: 100%;
-    height: 8px;
-    overflow: hidden;
-    border-radius: 20px;
-    background: var(--secondary);
-    margin-bottom: 13px;
-}
-
-.match-progress-fill {
-    width: 0%;
-    height: 100%;
-    border-radius: inherit;
-    background: var(--primary);
-    transition: width 0.4s ease;
-}
-
-/* Suggested skill gaps */
-
-.dashboard-skill-gaps {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-top: 25px;
-}
-
-.skill-gap-item {
-    padding: 15px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--background);
-}
-
-.skill-gap-item h3 {
-    margin: 0 0 7px;
-    color: var(--primary);
-    font-size: 14px;
-}
-
-.skill-gap-item p {
-    margin: 0;
-    color: var(--text-muted);
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-.skill-gap-label {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 5px 9px;
-    border-radius: 20px;
-    background: var(--secondary);
-    color: var(--primary);
-    font-size: 11px;
-    font-weight: 600;
-}
-
-/* Learning roadmap progress */
-
-.learning-progress {
-    margin-top: 25px;
-    padding: 18px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--background);
-}
-
-.progress-summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 12px;
-    color: var(--text);
-    font-size: 13px;
-}
-
-.progress-summary strong {
-    color: var(--primary);
-}
-
-.learning-progress-track {
-    height: 9px;
-    overflow: hidden;
-    border-radius: 20px;
-    background: var(--secondary);
-}
-
-.learning-progress-fill {
-    width: 0%;
-    height: 100%;
-    border-radius: inherit;
-    background: var(--primary);
-    transition: width 0.3s ease;
-}
-
-.progress-help {
-    margin: 10px 0 0;
-    color: var(--text-muted);
-    font-size: 12px;
-    line-height: 1.6;
-}
-
-/* Interactive roadmap steps */
-
-.roadmap-step-content {
-    flex: 1;
-    min-width: 0;
-}
-
 .roadmap-checkbox {
     width: 19px;
     height: 19px;
     flex-shrink: 0;
     accent-color: var(--primary);
     cursor: pointer;
+}
+
+.roadmap-checkbox:focus-visible {
+    outline: 3px solid var(--primary-light);
+    outline-offset: 3px;
 }
 
 .roadmap-step.completed .step-number {
@@ -542,4 +528,168 @@
     color: var(--text-muted);
     text-decoration: line-through;
     text-decoration-thickness: 1px;
+}
+
+.roadmap-link {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* Demo notice and footer */
+
+.dashboard-note {
+    margin: 25px 0;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+.dashboard-note strong {
+    color: var(--primary);
+}
+
+/* Tablet layout */
+
+@media (max-width: 850px) {
+    .dashboard-header {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .dashboard-nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px 22px;
+        padding-top: 10px;
+    }
+
+    .dashboard-main {
+        width: 90%;
+        margin: 30px auto;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .skill-match-card {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Mobile layout */
+
+@media (max-width: 600px) {
+    .dashboard-header {
+        padding: 16px 5%;
+        gap: 14px;
+    }
+
+    .dashboard-nav {
+        justify-content: flex-start;
+        gap: 12px 20px;
+    }
+
+    .dashboard-nav a {
+        font-size: 13px;
+    }
+
+    .profile-link {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .dashboard-main {
+        width: 90%;
+        margin: 26px auto;
+    }
+
+    .welcome-section {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
+        margin-bottom: 25px;
+    }
+
+    .welcome-section h1 {
+        font-size: clamp(28px, 8vw, 36px);
+    }
+
+    .dashboard-button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .dashboard-stats,
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .skill-match-card,
+    .roadmap-panel {
+        grid-column: auto;
+    }
+
+    .stat-card,
+    .dashboard-panel {
+        padding: 19px;
+    }
+
+    .stat-card h2 {
+        font-size: 21px;
+    }
+
+    .panel-heading h2 {
+        font-size: 18px;
+    }
+
+    .roadmap-step {
+        align-items: flex-start;
+        gap: 11px;
+        padding: 17px 0;
+    }
+
+    .step-number {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+    }
+
+    .roadmap-checkbox {
+        margin-top: 5px;
+    }
+
+    .learning-progress {
+        padding: 14px;
+    }
+
+    .progress-summary {
+        align-items: flex-start;
+    }
+
+    .dashboard-note {
+        text-align: left;
+    }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    .dashboard-nav a,
+    .dashboard-button,
+    .dashboard-skill-item,
+    .match-progress-fill,
+    .learning-progress-fill {
+        transition: none;
+    }
+
+    .dashboard-skill-item:hover,
+    .dashboard-button:hover {
+        transform: none;
+    }
 }

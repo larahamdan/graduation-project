@@ -2,160 +2,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Career Roadmap | CareerPath AI</title>
-  <link rel="stylesheet" href="results.css">
-  <script src="results.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Explore career skills and a practical learning roadmap with CareerPath AI."
+    >
+
+    <title>Your Career Roadmap | CareerPath AI</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="results.css">
+
+    <script src="results.js" defer></script>
 </head>
+
 <body>
+    <header class="navbar">
+        <a href="index.html" class="logo" aria-label="CareerPath AI home">
+            CareerPath<span>AI.</span>
+        </a>
 
-  
-<nav class="navbar">
-  <a href="index.html" class="logo">CareerPath<span>AI.</span></a>
+        <nav class="results-nav-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="upload.html">Upload CV</a>
+        </nav>
+    </header>
 
-  <div class="results-nav-links">
-    <a href="dashboard.html">Dashboard</a>
-    <a href="upload.html">Upload CV</a>
-    <a href="index.html" class="back-link">Home</a>
-  </div>
-</nav>
+    <main class="container results-container">
 
+        <!-- Introduction -->
+        <section class="welcome">
+            <p class="eyebrow">YOUR CAREER JOURNEY</p>
 
-  <main class="container">
-    
-<section class="welcome">
-  <p class="eyebrow">YOUR CAREER JOURNEY</p>
-  <h1>Let's figure out your next step<span>.</span></h1>
-  <p id="welcomeText">
-    You don't need to have your whole future figured out right now.
-    Let's start with where you are, explore what your chosen career needs,
-    and make a plan that feels manageable for you.
-  </p>
-</section>
+            <h1>
+                Let's figure out your next step<span>.</span>
+            </h1>
 
+            <p id="welcomeText">
+                You don't need to have your whole future figured out right now.
+                Explore the skills your chosen career may require and start
+                building a plan that feels manageable for you.
+            </p>
+        </section>
 
-    
-<section class="career-card">
-  <div>
-    <p class="card-label">THE CAREER YOU'RE EXPLORING</p>
-    <h2 id="careerTitle">Frontend Developer</h2>
-    <p id="experienceText">
-      Every career starts somewhere. Here's a place to begin.
-    </p>
-  </div>
-  <div class="career-icon" aria-hidden="true">✦</div>
-</section>
+        <!-- Selected career -->
+        <section class="career-card" aria-labelledby="careerTitle">
+            <div class="career-card-content">
+                <p class="card-label">THE CAREER YOU'RE EXPLORING</p>
 
+                <h2 id="careerTitle">Your chosen career</h2>
 
-    <section class="section-heading">
-      <div>
-        <p class="eyebrow">THE SKILL CHECK</p>
-        <h2>Skills to explore, one at a time</h2>
-      </div>
-      <span class="demo-tag">DEMO RESULTS</span>
-    </section>
+                <p id="experienceText">
+                    Every career starts somewhere. Here's a place to begin.
+                </p>
+            </div>
 
-    <section class="skills-grid">
-      <article class="skill-card">
-        <div class="skill-top">
-          <span class="skill-icon">✓</span>
-          <span class="skill-status strong">Start here</span>
-        </div>
-        <h3>HTML & CSS</h3>
-        <p>Build accessible, responsive web pages.</p>
-        <div class="progress-track"><div class="progress-fill" style="width: 35%"></div></div>
-        <small>Example progress: 35%</small>
-      </article>
+            <div class="career-icon" aria-hidden="true">
+                ✦
+            </div>
+        </section>
 
-      <article class="skill-card">
-        <div class="skill-top">
-          <span class="skill-icon">⌘</span>
-          <span class="skill-status">Practise</span>
-        </div>
-        <h3>JavaScript</h3>
-        <p>Learn interactivity, functions and DOM manipulation.</p>
-        <div class="progress-track"><div class="progress-fill" style="width: 20%"></div></div>
-        <small>Example progress: 20%</small>
-      </article>
+        <!-- Analysis status -->
+        <section
+            class="analysis-notice"
+            aria-labelledby="analysisStatusTitle"
+            role="status"
+        >
+            <div class="notice-icon" aria-hidden="true">i</div>
 
-      <article class="skill-card">
-        <div class="skill-top">
-          <span class="skill-icon">↗</span>
-          <span class="skill-status">Build next</span>
-        </div>
-        <h3>Git & GitHub</h3>
-        <p>Track your code and show your projects to employers.</p>
-        <div class="progress-track"><div class="progress-fill" style="width: 10%"></div></div>
-        <small>Example progress: 10%</small>
-      </article>
-    </section>
+            <div>
+                <h2 id="analysisStatusTitle">Your personalised analysis is pending</h2>
 
-    <section class="roadmap-section">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">YOUR GAME PLAN</p>
-          <h2>A roadmap that makes sense</h2>
-          <p class="section-description">
-  You don't have to learn everything this week. Let's focus on a few useful
-  skills and build from there.
-</p>
-        </div>
-      </div>
+                <p id="analysisStatusText">
+                    This prototype displays example career guidance.
+                    Your CV has not been analysed by an AI model yet.
+                    Personalised skill-gap results will be available when
+                    the backend is connected.
+                </p>
+            </div>
+        </section>
 
-      <div class="roadmap">
-        <article class="roadmap-item">
-          <div class="step-number">01</div>
-          <div class="step-content">
-            <span class="step-time">WEEK 1–2</span>
-            <h3>Strengthen the basics</h3>
-            <p>Review HTML and CSS, then build a responsive personal portfolio page.</p>
-            <span class="task-tag">Mini project: Portfolio page</span>
-          </div>
-          <span class="step-check">1</span>
-        </article>
+        <!-- Skills -->
+        <section class="skills-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">THE SKILL CHECK</p>
+                    <h2>Skills to explore, one at a time</h2>
 
-        <article class="roadmap-item">
-          <div class="step-number">02</div>
-          <div class="step-content">
-            <span class="step-time">WEEK 3–4</span>
-            <h3>Make it interactive</h3>
-            <p>Practise JavaScript fundamentals and add working features to your portfolio.</p>
-            <span class="task-tag">Mini project: Interactive website</span>
-          </div>
-          <span class="step-check">2</span>
-        </article>
+                    <p class="section-description">
+                        These are example skills associated with your selected
+                        career, not verified assessments of your current ability.
+                    </p>
+                </div>
 
-        <article class="roadmap-item">
-          <div class="step-number">03</div>
-          <div class="step-content">
-            <span class="step-time">WEEK 5–6</span>
-            <h3>Show your work</h3>
-            <p>Learn Git and GitHub, publish your projects, and improve your CV.</p>
-            <span class="task-tag">Goal: A stronger portfolio</span>
-          </div>
-          <span class="step-check">3</span>
-        </article>
-      </div>
-    </section>
+                <span class="demo-tag">EXAMPLE GUIDANCE</span>
+            </div>
 
-    <section class="bottom-cta">
-      <p class="eyebrow">ONE STEP AT A TIME</p>
-      <h2>Your career isn't built in a day.</h2>
-      <p>It's built by what you choose to practise today.</p>
-      <a href="upload.html" class="cta-button">Try another career goal →</a>
-    </section>
+            <div class="skills-grid" id="resultsSkills">
+                <article class="skill-card">
+                    <div class="skill-top">
+                        <span class="skill-icon" aria-hidden="true">✓</span>
+                        <span class="skill-status strong">Start here</span>
+                    </div>
 
-    <p class="disclaimer">
-      This is a prototype. Skill levels and roadmap tasks are examples, not actual CV analysis.
-      Personalised results will be added when the AI backend is connected.
-    </p>
-  </main>
+                    <h3>Core skills</h3>
 
-  <footer>
-    <a href="index.html" class="logo">CareerPath<span>AI.</span></a>
-    <p>Made for students figuring it out, one step at a time.</p>
-  </footer>
+                    <p>
+                        Explore the foundational knowledge used in your
+                        chosen career.
+                    </p>
 
+                    <div
+                        class="progress-track"
+                        role="progressbar"
+                        aria-label="Example skill progress"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        aria-valuenow="0"
+                    >
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+
+                    <small>Progress tracking not yet available</small>
+                </article>
+            </div>
+        </section>
+
+        <!-- Roadmap -->
+        <section class="roadmap-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR GAME PLAN</p>
+
+                    <h2>A roadmap that makes sense</h2>
+
+                    <p class="section-description">
+                        You don't have to learn everything this week.
+                        Start with a few useful skills and build from there.
+                    </p>
+                </div>
+            </div>
+
+            <div class="roadmap" id="resultsRoadmap">
+                <article class="roadmap-item">
+                    <div class="step-number">01</div>
+
+                    <div class="step-content">
+                        <span class="step-time">START HERE</span>
+
+                        <h3>Explore the fundamentals</h3>
+
+                        <p>
+                            Identify the foundational skills used in your
+                            chosen career and choose one to practise.
+                        </p>
+
+                        <span class="task-tag">
+                            Goal: Build your foundation
+                        </span>
+                    </div>
+
+                    <span class="step-check" aria-hidden="true">1</span>
+                </article>
+
+                <article class="roadmap-item">
+                    <div class="step-number">02</div>
+
+                    <div class="step-content">
+                        <span class="step-time">NEXT STEP</span>
+
+                        <h3>Practise through a project</h3>
+
+                        <p>
+                            Apply what you learn in a small project or
+                            practical exercise related to your career.
+                        </p>
+
+                        <span class="task-tag">
+                            Goal: Gain practical experience
+                        </span>
+                    </div>
+
+                    <span class="step-check" aria-hidden="true">2</span>
+                </article>
+
+                <article class="roadmap-item">
+                    <div class="step-number">03</div>
+
+                    <div class="step-content">
+                        <span class="step-time">KEEP BUILDING</span>
+
+                        <h3>Show what you can do</h3>
+
+                        <p>
+                            Document your work, improve your CV and identify
+                            opportunities to keep developing your skills.
+                        </p>
+
+                        <span class="task-tag">
+                            Goal: Build your portfolio
+                        </span>
+                    </div>
+
+                    <span class="step-check" aria-hidden="true">3</span>
+                </article>
+            </div>
+        </section>
+
+        <!-- Next actions -->
+        <section class="bottom-cta">
+            <p class="eyebrow">ONE STEP AT A TIME</p>
+
+            <h2>Your career isn't built in a day.</h2>
+
+            <p>
+                It's built by what you choose to practise today.
+            </p>
+
+            <div class="results-actions">
+                <a href="upload.html" class="cta-button">
+                    Explore another career
+                    <span aria-hidden="true">→</span>
+                </a>
+
+                <a href="dashboard.html" class="secondary-button">
+                    Back to dashboard
+                </a>
+            </div>
+        </section>
+
+        <!-- Prototype disclaimer -->
+        <p class="disclaimer">
+            <strong>Prototype notice:</strong>
+            The skills and roadmap shown here are example guidance.
+            No AI-powered CV analysis, verified skill matching or personalised
+            recommendations are being performed yet.
+        </p>
+
+    </main>
+
+    <footer class="site-footer">
+        <a href="index.html" class="logo">
+            CareerPath<span>AI.</span>
+        </a>
+
+        <p>
+            Made for students figuring it out, one step at a time.
+        </p>
+    </footer>
 </body>
 </html>

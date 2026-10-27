@@ -1,5 +1,6 @@
 
 /* CareerPath AI — CV Upload Page */
+/* Blue and White Theme */
 
 .upload-page {
     padding-bottom: 50px;
@@ -11,14 +12,17 @@
 
 .upload-page .page-header .eyebrow {
     margin-bottom: 14px;
+    color: var(--primary-light);
 }
 
 .upload-page .page-header h1 {
     margin-bottom: 12px;
+    color: var(--primary);
 }
 
 .upload-page .page-header p {
     max-width: 640px;
+    color: var(--text-muted);
 }
 
 .upload-layout {
@@ -70,23 +74,25 @@
     align-items: center;
     gap: 10px;
     padding: 32px 20px;
-    border: 2px dashed #AABBD0;
+    border: 2px dashed var(--border);
     border-radius: var(--radius);
-    background: #F9FBFE;
+    background: #F8FAFE;
     text-align: center;
     cursor: pointer;
-    transition: background var(--transition),
-        border-color var(--transition);
+    transition:
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
 }
 
 .upload-area:hover,
 .upload-area.dragover {
-    border-color: var(--primary);
+    border-color: var(--primary-light);
     background: var(--secondary);
 }
 
 .upload-area:focus-within {
-    outline: 3px solid #7295BC;
+    outline: 3px solid rgba(75, 139, 244, 0.3);
     outline-offset: 3px;
 }
 
@@ -123,6 +129,7 @@
 
 .form-help {
     margin: 12px 0 28px;
+    color: var(--text-muted);
 }
 
 .career-step {
@@ -132,6 +139,7 @@
 .upload-message {
     margin: 16px 0;
     padding: 12px 14px;
+    border: 1px solid var(--border);
     border-radius: 9px;
     background: var(--secondary);
     color: var(--primary);
@@ -202,6 +210,7 @@
 
 .reassurance-card {
     background: #F0F5FB;
+    border: 1px solid var(--border);
 }
 
 .reassurance-card h3 {
@@ -210,6 +219,7 @@
     font-size: 1.05rem;
 }
 
+/* Tablet layout */
 @media (max-width: 800px) {
     .upload-layout {
         grid-template-columns: 1fr;
@@ -220,6 +230,7 @@
     }
 }
 
+/* Mobile layout */
 @media (max-width: 560px) {
     .upload-card {
         padding: 20px;

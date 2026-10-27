@@ -4,49 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-          content="Upload your CV and choose a career to start building your personalised learning roadmap.">
+    <meta name="description" content="Upload your CV and choose a career to start building your personalised learning roadmap with CareerPath AI.">
+    <meta name="theme-color" content="#163A70">
     <title>Build Your Career Plan | CareerPath AI</title>
+
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="upload.css">
 </head>
 <body>
 
+    <!-- Navigation -->
     <header class="navbar">
         <nav class="nav-container" aria-label="Main navigation">
-            <a href="index.html" class="logo">CareerPath <span>AI</span></a>
+            <a href="index.html" class="logo" aria-label="CareerPath AI homepage">
+                CareerPath <span>AI</span>
+            </a>
 
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#features">Features</a></li>
-                <li><a href="upload.html" class="active">Career planner</a></li>
+                <li><a href="upload.html" class="active" aria-current="page">Career planner</a></li>
+                <li><a href="login.html">Log in</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="container upload-page">
+
+        <!-- Page introduction -->
         <section class="page-header">
             <span class="eyebrow">LET'S GET STARTED</span>
             <h1>Build your career plan</h1>
             <p>
-                Tell us a little about your career goals. We'll help you
-                understand your current skills and identify what you could
-                learn next.
+                Tell us a little about your career goals. CareerPath AI is
+                designed to help you understand your current skills and
+                identify what you could learn next.
             </p>
         </section>
 
         <div class="upload-layout">
 
+            <!-- Main form -->
             <section class="card upload-card">
-                <form id="careerForm" enctype="multipart/form-data">
+                <form id="careerForm" enctype="multipart/form-data" novalidate>
 
+                    <!-- Step 1: CV upload -->
                     <div class="step-heading">
-                        <span class="step-number">1</span>
+                        <span class="step-number" aria-hidden="true">1</span>
                         <div>
                             <h2>Upload your CV</h2>
                             <p>
-                                We'll use the information in your CV to
-                                identify your listed skills and experience.
+                                Your CV can help identify the skills and
+                                experience you have listed.
                             </p>
                         </div>
                     </div>
@@ -55,302 +64,317 @@
                         <span class="upload-symbol" aria-hidden="true">
                             &#128196;
                         </span>
+
                         <span class="upload-title" id="uploadTitle">
                             Choose your CV to get started
                         </span>
+
                         <span class="upload-description" id="uploadDescription">
                             Select a PDF or DOCX file from your device.
                         </span>
+
                         <span class="btn btn-secondary upload-browse">
                             Browse files
                         </span>
+
                         <input
                             type="file"
                             id="cvFile"
                             name="cv"
-                            accept=".pdf,.docx"
+                            accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                            aria-describedby="cvHelp"
                             required
                         >
                     </label>
 
-                    <p class="form-help">
-                        Please upload a PDF or DOCX file, up to 5 MB.
+                    <p class="form-help" id="cvHelp">
+                        PDF or DOCX only. Maximum file size: 5 MB.
                     </p>
 
+                    <!-- Step 2: Career selection -->
                     <div class="step-heading career-step">
-                        <span class="step-number">2</span>
+                        <span class="step-number" aria-hidden="true">2</span>
                         <div>
                             <h2>Choose a career you're interested in</h2>
                             <p>
-                                Pick a role you'd like to work towards.
-                                You can explore other options later.
+                                Search for a career or browse the available
+                                options. You can choose a different career later.
                             </p>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="careerRole">Target career</label>
-                     
+                        <label for="careerSearch">
+                            Search careers
+                        </label>
 
-<div class="form-group">
-    <label for="careerSearch">What career are you interested in?</label>
+                        <input
+                            type="search"
+                            id="careerSearch"
+                            class="form-control"
+                            placeholder="e.g. Lawyer, UX designer, teacher..."
+                            autocomplete="off"
+                            aria-describedby="careerHelp"
+                        >
+                    </div>
 
-    <input
-        type="text"
-        id="careerSearch"
-        class="form-control"
-        placeholder="Search careers, e.g. lawyer, UX designer..."
-        autocomplete="off"
-        aria-describedby="careerHelp"
-    >
+                    <div class="form-group">
+                        <label for="careerRole">Select your target career</label>
 
-    <label for="careerRole" style="margin-top: 16px;">
-        Select a career
-    </label>
+                        <select
+                            class="form-control"
+                            id="careerRole"
+                            name="career"
+                            required
+                            aria-describedby="careerHelp"
+                        >
+                            <option value="">Choose a career path</option>
 
-    <select
-        class="form-control"
-        id="careerRole"
-        name="career"
-        required
-    >
-        <option value="">Choose a career path</option>
+                            <optgroup label="Technology and Software">
+                                <option value="software-engineer">Software Engineer</option>
+                                <option value="frontend-developer">Frontend Developer</option>
+                                <option value="backend-developer">Backend Developer</option>
+                                <option value="fullstack-developer">Full-Stack Developer</option>
+                                <option value="mobile-app-developer">Mobile App Developer</option>
+                                <option value="web-developer">Web Developer</option>
+                                <option value="game-developer">Game Developer</option>
+                                <option value="cloud-engineer">Cloud Engineer</option>
+                                <option value="devops-engineer">DevOps Engineer</option>
+                                <option value="qa-engineer">QA Engineer / Software Tester</option>
+                                <option value="solutions-architect">Solutions Architect</option>
+                                <option value="it-support-specialist">IT Support Specialist</option>
+                            </optgroup>
 
-        <optgroup label="Technology and Software">
-            <option value="software-engineer">Software Engineer</option>
-            <option value="frontend-developer">Frontend Developer</option>
-            <option value="backend-developer">Backend Developer</option>
-            <option value="fullstack-developer">Full-Stack Developer</option>
-            <option value="mobile-app-developer">Mobile App Developer</option>
-            <option value="web-developer">Web Developer</option>
-            <option value="game-developer">Game Developer</option>
-            <option value="cloud-engineer">Cloud Engineer</option>
-            <option value="devops-engineer">DevOps Engineer</option>
-            <option value="qa-engineer">QA Engineer / Software Tester</option>
-            <option value="solutions-architect">Solutions Architect</option>
-            <option value="it-support-specialist">IT Support Specialist</option>
-        </optgroup>
+                            <optgroup label="AI, Data and Cybersecurity">
+                                <option value="data-analyst">Data Analyst</option>
+                                <option value="data-scientist">Data Scientist</option>
+                                <option value="data-engineer">Data Engineer</option>
+                                <option value="machine-learning-engineer">Machine Learning Engineer</option>
+                                <option value="ai-engineer">AI Engineer</option>
+                                <option value="business-intelligence-analyst">Business Intelligence Analyst</option>
+                                <option value="cybersecurity-analyst">Cybersecurity Analyst</option>
+                                <option value="cybersecurity-engineer">Cybersecurity Engineer</option>
+                                <option value="penetration-tester">Penetration Tester</option>
+                                <option value="digital-forensics-analyst">Digital Forensics Analyst</option>
+                            </optgroup>
 
-        <optgroup label="AI, Data and Cybersecurity">
-            <option value="data-analyst">Data Analyst</option>
-            <option value="data-scientist">Data Scientist</option>
-            <option value="data-engineer">Data Engineer</option>
-            <option value="machine-learning-engineer">Machine Learning Engineer</option>
-            <option value="ai-engineer">AI Engineer</option>
-            <option value="business-intelligence-analyst">Business Intelligence Analyst</option>
-            <option value="cybersecurity-analyst">Cybersecurity Analyst</option>
-            <option value="cybersecurity-engineer">Cybersecurity Engineer</option>
-            <option value="penetration-tester">Penetration Tester</option>
-            <option value="digital-forensics-analyst">Digital Forensics Analyst</option>
-        </optgroup>
+                            <optgroup label="Business and Management">
+                                <option value="business-analyst">Business Analyst</option>
+                                <option value="business-development-manager">Business Development</option>
+                                <option value="project-manager">Project Manager</option>
+                                <option value="product-manager">Product Manager</option>
+                                <option value="operations-manager">Operations Manager</option>
+                                <option value="management-consultant">Management Consultant</option>
+                                <option value="entrepreneur">Entrepreneur / Business Owner</option>
+                                <option value="strategy-analyst">Strategy Analyst</option>
+                                <option value="human-resources">Human Resources Specialist</option>
+                                <option value="recruiter">Recruiter / Talent Acquisition</option>
+                            </optgroup>
 
-        <optgroup label="Business and Management">
-            <option value="business-analyst">Business Analyst</option>
-            <option value="business-development-manager">Business Development</option>
-            <option value="project-manager">Project Manager</option>
-            <option value="product-manager">Product Manager</option>
-            <option value="operations-manager">Operations Manager</option>
-            <option value="management-consultant">Management Consultant</option>
-            <option value="entrepreneur">Entrepreneur / Business Owner</option>
-            <option value="strategy-analyst">Strategy Analyst</option>
-            <option value="human-resources">Human Resources Specialist</option>
-            <option value="recruiter">Recruiter / Talent Acquisition</option>
-        </optgroup>
+                            <optgroup label="Finance and Economics">
+                                <option value="accountant">Accountant</option>
+                                <option value="financial-analyst">Financial Analyst</option>
+                                <option value="investment-banker">Investment Banker</option>
+                                <option value="auditor">Auditor</option>
+                                <option value="economist">Economist</option>
+                                <option value="actuary">Actuary</option>
+                                <option value="risk-analyst">Risk Analyst</option>
+                                <option value="tax-consultant">Tax Consultant</option>
+                                <option value="fintech-specialist">FinTech Specialist</option>
+                            </optgroup>
 
-        <optgroup label="Finance and Economics">
-            <option value="accountant">Accountant</option>
-            <option value="financial-analyst">Financial Analyst</option>
-            <option value="investment-banker">Investment Banker</option>
-            <option value="auditor">Auditor</option>
-            <option value="economist">Economist</option>
-            <option value="actuary">Actuary</option>
-            <option value="risk-analyst">Risk Analyst</option>
-            <option value="tax-consultant">Tax Consultant</option>
-            <option value="fintech-specialist">FinTech Specialist</option>
-        </optgroup>
+                            <optgroup label="Marketing and Communications">
+                                <option value="digital-marketer">Digital Marketer</option>
+                                <option value="social-media-manager">Social Media Manager</option>
+                                <option value="seo-specialist">SEO Specialist</option>
+                                <option value="brand-manager">Brand Manager</option>
+                                <option value="marketing-analyst">Marketing Analyst</option>
+                                <option value="public-relations-specialist">Public Relations Specialist</option>
+                                <option value="communications-specialist">Communications Specialist</option>
+                                <option value="content-strategist">Content Strategist</option>
+                                <option value="copywriter">Copywriter</option>
+                                <option value="sales-representative">Sales Representative</option>
+                            </optgroup>
 
-        <optgroup label="Marketing and Communications">
-            <option value="digital-marketer">Digital Marketer</option>
-            <option value="social-media-manager">Social Media Manager</option>
-            <option value="seo-specialist">SEO Specialist</option>
-            <option value="brand-manager">Brand Manager</option>
-            <option value="marketing-analyst">Marketing Analyst</option>
-            <option value="public-relations-specialist">Public Relations Specialist</option>
-            <option value="communications-specialist">Communications Specialist</option>
-            <option value="content-strategist">Content Strategist</option>
-            <option value="copywriter">Copywriter</option>
-            <option value="sales-representative">Sales Representative</option>
-        </optgroup>
+                            <optgroup label="Design and Creative Industries">
+                                <option value="ui-ux-designer">UI/UX Designer</option>
+                                <option value="graphic-designer">Graphic Designer</option>
+                                <option value="product-designer">Product Designer</option>
+                                <option value="web-designer">Web Designer</option>
+                                <option value="animator">Animator</option>
+                                <option value="video-editor">Video Editor</option>
+                                <option value="photographer">Photographer</option>
+                                <option value="fashion-designer">Fashion Designer</option>
+                                <option value="interior-designer">Interior Designer</option>
+                                <option value="architect">Architect</option>
+                            </optgroup>
 
-        <optgroup label="Design and Creative Industries">
-            <option value="ui-ux-designer">UI/UX Designer</option>
-            <option value="graphic-designer">Graphic Designer</option>
-            <option value="product-designer">Product Designer</option>
-            <option value="web-designer">Web Designer</option>
-            <option value="animator">Animator</option>
-            <option value="video-editor">Video Editor</option>
-            <option value="photographer">Photographer</option>
-            <option value="fashion-designer">Fashion Designer</option>
-            <option value="interior-designer">Interior Designer</option>
-            <option value="architect">Architect</option>
-        </optgroup>
+                            <optgroup label="Engineering and Manufacturing">
+                                <option value="civil-engineer">Civil Engineer</option>
+                                <option value="mechanical-engineer">Mechanical Engineer</option>
+                                <option value="electrical-engineer">Electrical Engineer</option>
+                                <option value="chemical-engineer">Chemical Engineer</option>
+                                <option value="petroleum-engineer">Petroleum Engineer</option>
+                                <option value="industrial-engineer">Industrial Engineer</option>
+                                <option value="mechatronics-engineer">Mechatronics Engineer</option>
+                                <option value="renewable-energy-engineer">Renewable Energy Engineer</option>
+                                <option value="quality-engineer">Quality Engineer</option>
+                                <option value="health-and-safety-specialist">Health and Safety Specialist</option>
+                            </optgroup>
 
-        <optgroup label="Engineering and Manufacturing">
-            <option value="civil-engineer">Civil Engineer</option>
-            <option value="mechanical-engineer">Mechanical Engineer</option>
-            <option value="electrical-engineer">Electrical Engineer</option>
-            <option value="chemical-engineer">Chemical Engineer</option>
-            <option value="petroleum-engineer">Petroleum Engineer</option>
-            <option value="industrial-engineer">Industrial Engineer</option>
-            <option value="mechatronics-engineer">Mechatronics Engineer</option>
-            <option value="renewable-energy-engineer">Renewable Energy Engineer</option>
-            <option value="quality-engineer">Quality Engineer</option>
-            <option value="health-and-safety-specialist">Health and Safety Specialist</option>
-        </optgroup>
+                            <optgroup label="Healthcare and Life Sciences">
+                                <option value="doctor">Doctor / Physician</option>
+                                <option value="nurse">Nurse</option>
+                                <option value="pharmacist">Pharmacist</option>
+                                <option value="dentist">Dentist</option>
+                                <option value="physiotherapist">Physiotherapist</option>
+                                <option value="medical-laboratory-scientist">Medical Laboratory Scientist</option>
+                                <option value="radiographer">Radiographer</option>
+                                <option value="public-health-specialist">Public Health Specialist</option>
+                                <option value="nutritionist">Nutritionist / Dietitian</option>
+                                <option value="biomedical-scientist">Biomedical Scientist</option>
+                                <option value="biotechnologist">Biotechnologist</option>
+                                <option value="clinical-researcher">Clinical Researcher</option>
+                            </optgroup>
 
-        <optgroup label="Healthcare and Life Sciences">
-            <option value="doctor">Doctor / Physician</option>
-            <option value="nurse">Nurse</option>
-            <option value="pharmacist">Pharmacist</option>
-            <option value="dentist">Dentist</option>
-            <option value="physiotherapist">Physiotherapist</option>
-            <option value="medical-laboratory-scientist">Medical Laboratory Scientist</option>
-            <option value="radiographer">Radiographer</option>
-            <option value="public-health-specialist">Public Health Specialist</option>
-            <option value="nutritionist">Nutritionist / Dietitian</option>
-            <option value="biomedical-scientist">Biomedical Scientist</option>
-            <option value="biotechnologist">Biotechnologist</option>
-            <option value="clinical-researcher">Clinical Researcher</option>
-        </optgroup>
+                            <optgroup label="Law, Government and Public Service">
+                                <option value="lawyer">Lawyer / Solicitor</option>
+                                <option value="legal-advisor">Legal Advisor</option>
+                                <option value="paralegal">Paralegal</option>
+                                <option value="compliance-officer">Compliance Officer</option>
+                                <option value="policy-analyst">Policy Analyst</option>
+                                <option value="diplomat">Diplomat / Foreign Service Officer</option>
+                                <option value="public-administrator">Public Administrator</option>
+                                <option value="human-rights-officer">Human Rights Officer</option>
+                                <option value="international-relations-specialist">International Relations Specialist</option>
+                            </optgroup>
 
-        <optgroup label="Law, Government and Public Service">
-            <option value="lawyer">Lawyer / Solicitor</option>
-            <option value="legal-advisor">Legal Advisor</option>
-            <option value="paralegal">Paralegal</option>
-            <option value="compliance-officer">Compliance Officer</option>
-            <option value="policy-analyst">Policy Analyst</option>
-            <option value="diplomat">Diplomat / Foreign Service Officer</option>
-            <option value="public-administrator">Public Administrator</option>
-            <option value="human-rights-officer">Human Rights Officer</option>
-            <option value="international-relations-specialist">International Relations Specialist</option>
-        </optgroup>
+                            <optgroup label="Education and Research">
+                                <option value="teacher">Teacher</option>
+                                <option value="university-lecturer">University Lecturer</option>
+                                <option value="academic-researcher">Academic Researcher</option>
+                                <option value="education-consultant">Education Consultant</option>
+                                <option value="instructional-designer">Instructional Designer</option>
+                                <option value="learning-development-specialist">Learning and Development Specialist</option>
+                            </optgroup>
 
-        <optgroup label="Education and Research">
-            <option value="teacher">Teacher</option>
-            <option value="university-lecturer">University Lecturer</option>
-            <option value="academic-researcher">Academic Researcher</option>
-            <option value="education-consultant">Education Consultant</option>
-            <option value="instructional-designer">Instructional Designer</option>
-            <option value="learning-development-specialist">Learning and Development Specialist</option>
-        </optgroup>
+                            <optgroup label="Psychology and Social Sciences">
+                                <option value="psychologist">Psychologist</option>
+                                <option value="counsellor">Counsellor</option>
+                                <option value="social-worker">Social Worker</option>
+                                <option value="sociologist">Sociologist</option>
+                                <option value="criminologist">Criminologist</option>
+                                <option value="user-researcher">User Researcher</option>
+                            </optgroup>
 
-        <optgroup label="Psychology and Social Sciences">
-            <option value="psychologist">Psychologist</option>
-            <option value="counsellor">Counsellor</option>
-            <option value="social-worker">Social Worker</option>
-            <option value="sociologist">Sociologist</option>
-            <option value="criminologist">Criminologist</option>
-            <option value="user-researcher">User Researcher</option>
-        </optgroup>
+                            <optgroup label="Environment and Agriculture">
+                                <option value="environmental-scientist">Environmental Scientist</option>
+                                <option value="environmental-engineer">Environmental Engineer</option>
+                                <option value="sustainability-consultant">Sustainability Consultant</option>
+                                <option value="agricultural-engineer">Agricultural Engineer</option>
+                                <option value="agricultural-scientist">Agricultural Scientist</option>
+                                <option value="food-scientist">Food Scientist</option>
+                            </optgroup>
 
-        <optgroup label="Environment and Agriculture">
-            <option value="environmental-scientist">Environmental Scientist</option>
-            <option value="environmental-engineer">Environmental Engineer</option>
-            <option value="sustainability-consultant">Sustainability Consultant</option>
-            <option value="agricultural-engineer">Agricultural Engineer</option>
-            <option value="agricultural-scientist">Agricultural Scientist</option>
-            <option value="food-scientist">Food Scientist</option>
-        </optgroup>
+                            <optgroup label="Logistics, Hospitality and Other Careers">
+                                <option value="supply-chain-analyst">Supply Chain Analyst</option>
+                                <option value="logistics-manager">Logistics Manager</option>
+                                <option value="procurement-specialist">Procurement Specialist</option>
+                                <option value="aviation-professional">Aviation Professional</option>
+                                <option value="hotel-manager">Hotel Manager</option>
+                                <option value="event-planner">Event Planner</option>
+                                <option value="travel-consultant">Travel Consultant</option>
+                                <option value="journalist">Journalist</option>
+                                <option value="translator">Translator / Interpreter</option>
+                                <option value="customer-success-manager">Customer Success Manager</option>
+                            </optgroup>
 
-        <optgroup label="Logistics, Hospitality and Other Careers">
-            <option value="supply-chain-analyst">Supply Chain Analyst</option>
-            <option value="logistics-manager">Logistics Manager</option>
-            <option value="procurement-specialist">Procurement Specialist</option>
-            <option value="aviation-professional">Aviation Professional</option>
-            <option value="hotel-manager">Hotel Manager</option>
-            <option value="event-planner">Event Planner</option>
-            <option value="travel-consultant">Travel Consultant</option>
-            <option value="journalist">Journalist</option>
-            <option value="translator">Translator / Interpreter</option>
-            <option value="customer-success-manager">Customer Success Manager</option>
-        </optgroup>
+                            <option value="other">Other career</option>
+                        </select>
 
-        <option value="other">Other career</option>
-    </select>
+                        <p class="form-help" id="careerHelp">
+                            Can't find your preferred career? Search above or
+                            choose “Other career” to enter your own job title.
+                        </p>
+                    </div>
 
-    <p class="form-help" id="careerHelp">
-        Can't find your preferred career? Choose “Other career” and enter
-        the job title in the field below.
-    </p>
+                    <!-- Custom career field -->
+                    <div class="form-group" id="customCareerGroup" hidden>
+                        <label for="customCareer">Enter your preferred career</label>
 
-    <div class="form-group" id="customCareerGroup" hidden>
-        <label for="customCareer">Enter your preferred career</label>
-        <input
-            type="text"
-            class="form-control"
-            id="customCareer"
-            name="customCareer"
-            placeholder="e.g. Sports Psychologist"
-            maxlength="120"
-        >
-    </div>
-</div>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="customCareer"
+                            name="customCareer"
+                            placeholder="e.g. Sports Psychologist"
+                            maxlength="120"
+                            autocomplete="organization-title"
+                            disabled
+                        >
+                    </div>
 
-                    <div id="uploadMessage" class="upload-message"
-                         role="status" aria-live="polite" hidden></div>
+                    <!-- Form status message -->
+                    <div
+                        id="uploadMessage"
+                        class="upload-message"
+                        role="status"
+                        aria-live="polite"
+                        hidden
+                    ></div>
 
-                    <button type="submit" class="btn btn-primary btn-block"
-                            id="analyzeButton">
-                        Analyse my skills &rarr;
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-block"
+                        id="analyzeButton"
+                    >
+                        Prepare my career plan &rarr;
                     </button>
 
                     <p class="privacy-note">
-                        Your CV contains personal information. Only upload
-                        a file you're comfortable sharing with this project.
+                        Your CV may contain personal information. Only select
+                        a file you're comfortable using for this student project.
+                        This page does not send your CV to an AI service yet.
                     </p>
 
                 </form>
             </section>
 
+            <!-- Information sidebar -->
             <aside class="upload-sidebar">
+
                 <section class="card">
-                    <h2>What you'll get</h2>
+                    <h2>What your career plan is designed to provide</h2>
 
                     <div class="benefit">
-                        <span class="benefit-icon" aria-hidden="true">
-                            &#10003;
-                        </span>
+                        <span class="benefit-icon" aria-hidden="true">&#10003;</span>
                         <div>
                             <h3>Your current skills</h3>
                             <p>
-                                An overview of the skills identified
-                                in your CV.
+                                An overview of skills identified from your CV,
+                                once CV analysis is connected.
                             </p>
                         </div>
                     </div>
 
                     <div class="benefit">
-                        <span class="benefit-icon" aria-hidden="true">
-                            &#10003;
-                        </span>
+                        <span class="benefit-icon" aria-hidden="true">&#10003;</span>
                         <div>
                             <h3>Your skill gaps</h3>
                             <p>
-                                Skills you may want to develop for
-                                your chosen career.
+                                Skills you may want to develop for your
+                                selected career.
                             </p>
                         </div>
                     </div>
 
                     <div class="benefit">
-                        <span class="benefit-icon" aria-hidden="true">
-                            &#10003;
-                        </span>
+                        <span class="benefit-icon" aria-hidden="true">&#10003;</span>
                         <div>
                             <h3>A learning roadmap</h3>
                             <p>
-                                Suggested steps and resources to help
-                                you keep moving forward.
+                                Suggested learning steps and resources to help
+                                you work towards your goal.
                             </p>
                         </div>
                     </div>
@@ -359,20 +383,22 @@
                 <section class="card reassurance-card">
                     <h3>You don't need to know everything yet.</h3>
                     <p>
-                        CareerPath AI is designed to help you understand
-                        where to focus next. Think of your results as a
-                        starting point, not a final judgement of your
-                        abilities.
+                        CareerPath AI is designed to help you decide where
+                        to focus next. Your future results should be a
+                        starting point, not a final judgement of your abilities.
                     </p>
                 </section>
-            </aside>
 
+            </aside>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container footer-content">
-            <a href="index.html" class="logo">CareerPath <span>AI</span></a>
+            <a href="index.html" class="logo" aria-label="CareerPath AI homepage">
+                CareerPath <span>AI</span>
+            </a>
             <p>Helping students take the next step in their careers.</p>
             <p>&copy; 2026 CareerPath AI. Built for students.</p>
         </div>
