@@ -1,3 +1,4 @@
+from auth import router as auth_router
 
 from fastapi import FastAPI, HTTPException, Depends
 from pydantic import BaseModel, Field
@@ -7,6 +8,7 @@ from database import get_db
 from models import Student
 
 app = FastAPI(title="CareerPath AI")
+app.include_router(auth_router)
 
 
 # Student information received from the frontend
