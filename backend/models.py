@@ -38,3 +38,30 @@ class User(Base):
         nullable=False
     )
 
+
+class CVAnalysis(Base):
+    __tablename__ = "cv_analyses"
+
+    id = Column(Integer, primary_key=True, index=True)
+
+    user_id = Column(
+        Integer,
+        ForeignKey("users.id"),
+        nullable=False,
+        index=True
+    )
+
+    filename = Column(String(255), nullable=False)
+
+    skills = Column(JSON, nullable=False)
+    education = Column(JSON, nullable=False)
+    experience = Column(JSON, nullable=False)
+
+    extracted_text = Column(String, nullable=False)
+
+    created_at = Column(
+        DateTime(timezone=True),
+        default=lambda: datetime.now(timezone.utc),
+        nullable=False
+    )
+

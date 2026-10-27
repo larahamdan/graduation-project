@@ -9,6 +9,11 @@ from io import BytesIO
 from zipfile import BadZipFile
 from cv_analyzer import analyze_cv
 
+from sqlalchemy.orm import Session
+from database import get_db
+from models import CVAnalysis
+
+
 
 router = APIRouter(prefix="/cv", tags=["CV Upload"])
 
@@ -18,7 +23,8 @@ MAX_FILE_SIZE = 5 * 1024 * 1024  # 5 MB
 @router.post("/upload")
 async def upload_cv(
     file: UploadFile = File(...),
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
 ):
     if not file.filename or not file.filename.lower().endswith(
         (".pdf", ".docx")
@@ -62,7 +68,37 @@ async def upload_cv(
             detail="Unable to read this document. Please upload a valid PDF or DOCX."
         ) from error
 
+   
     analysis = analyze_cv(extracted_text)
+
+    new_analysis = CVAnalysis(
+        user_id=current_user.id,
+        filename=file.filename,
+        skills=analysis["skills"],
+        education=analysis["education"],
+        experience=analysis["experience"],
+        extracted_text=extracted_text
+    )
+
+    db.add(new_analysis)
+    db.commit()
+    db.refresh(new_analysis)
+
+    return {
+        "message": "CV uploaded and analyzed successfully",
+        "analysis_id": new_analysis.id,
+        "filename": file.filename,
+        "size_bytes": len(content),
+        "user_id": current_user.id,
+        "extracted_text": extracted_text,
+        "analysis": analysis
+    }
+
+
+
+    db.add(new_analysis)
+    db.commit()
+    db.refresh(new_analysis)
 
     return {
         "message": "CV uploaded and analyzed successfully",
