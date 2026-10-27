@@ -108,3 +108,31 @@ async def upload_cv(
         "extracted_text": extracted_text,
         "analysis": analysis
     }
+
+
+@router.get("/analyses")
+def get_my_cv_analyses(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    analyses = (
+        db.query(CVAnalysis)
+        .filter(CVAnalysis.user_id == current_user.id)
+        .order_by(CVAnalysis.created_at.desc())
+        .all()
+    )
+
+    return {
+        "total": len(analyses),
+        "analyses": [
+            {
+                "analysis_id": item.id,
+                "filename": item.filename,
+                "skills": item.skills,
+                "education": item.education,
+                "experience": item.experience,
+                "created_at": item.created_at.isoformat()
+            }
+            for item in analyses
+        ]
+    }
