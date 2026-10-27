@@ -7,6 +7,8 @@ from pypdf import PdfReader
 from docx import Document
 from io import BytesIO
 from zipfile import BadZipFile
+from cv_analyzer import analyze_cv
+
 
 router = APIRouter(prefix="/cv", tags=["CV Upload"])
 
@@ -53,16 +55,20 @@ async def upload_cv(
                 paragraph.text for paragraph in document.paragraphs
             )
 
-    except (ValueError, BadZipFile, Exception) as error:
+    
+    except Exception as error:
         raise HTTPException(
             status_code=400,
             detail="Unable to read this document. Please upload a valid PDF or DOCX."
         ) from error
 
+    analysis = analyze_cv(extracted_text)
+
     return {
-        "message": "CV uploaded and text extracted successfully",
+        "message": "CV uploaded and analyzed successfully",
         "filename": file.filename,
         "size_bytes": len(content),
         "user_id": current_user.id,
-        "extracted_text": extracted_text
+        "extracted_text": extracted_text,
+        "analysis": analysis
     }
