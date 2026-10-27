@@ -58,3 +58,59 @@ def register(data: RegisterRequest, db: Session = Depends(get_db)):
         "full_name": new_user.full_name,
         "email": new_user.email
     }
+
+
+
+import os
+from datetime import datetime, timedelta, timezone
+
+import jwt
+from dotenv import load_dotenv
+
+load_dotenv()
+
+SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+ALGORITHM = "HS256"
+
+if not SECRET_KEY:
+    raise RuntimeError("JWT_SECRET_KEY is missing from .env")
+
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
+
+
+@router.post("/login")
+def login(data: LoginRequest, db: Session = Depends(get_db)):
+    email = str(data.email).lower()
+
+    user = db.scalar(
+        select(User).where(func.lower(User.email) == email)
+    )
+
+    if user is None or not password_hash.verify(
+        data.password, user.hashed_password
+    ):
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid email or password",
+            headers={"WWW-Authenticate": "Bearer"}
+        )
+
+    expire = datetime.now(timezone.utc) + timedelta(minutes=30)
+
+    token = jwt.encode(
+        {
+            "sub": str(user.id),
+            "exp": expire
+        },
+        SECRET_KEY,
+        algorithm=ALGORITHM
+    )
+
+    return {
+        "access_token": token,
+        "token_type": "bearer"
+    }
+
