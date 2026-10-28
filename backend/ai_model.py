@@ -136,25 +136,37 @@ def get_career_embeddings():
 
 
 
+
 def recommend_careers_ai(cv_text, top_n=5):
     model = load_model()
 
-    # Reuse previously calculated career embeddings
     careers, career_embeddings = get_career_embeddings()
 
-    cv_embedding = model.encode(
-        cv_text,
-        convert_to_tensor=True
+    # Split the CV into sections
+    chunks = split_text_into_chunks(cv_text, max_words=100)
+
+    if not chunks:
+        return []
+
+    # Convert all CV sections into embeddings
+    chunk_embeddings = model.encode(
+        chunks,
+        convert_to_tensor=True,
+        show_progress_bar=False
     )
 
-    similarities = util.cos_sim(
-        cv_embedding,
+    # Compare every chunk with every career
+    similarity_matrix = util.cos_sim(
+        chunk_embeddings,
         career_embeddings
-    )[0]
+    )
+
+    # Average similarity across document chunks
+    average_similarities = similarity_matrix.mean(dim=0)
 
     results = []
 
-    for career, similarity in zip(careers, similarities):
+    for career, similarity in zip(careers, average_similarities):
         results.append({
             "career": career,
             "similarity_score": round(
@@ -185,3 +197,21 @@ def recommend_careers_ai(cv_text, top_n=5):
     )
 
     return results[:top_n]
+
+
+def split_text_into_chunks(text, max_words=100):
+    """
+    Split long document text into smaller sections.
+    """
+    words = text.split()
+
+    if not words:
+        return []
+
+    chunks = []
+
+    for i in range(0, len(words), max_words):
+        chunk = " ".join(words[i:i + max_words])
+        chunks.append(chunk)
+
+    return chunks

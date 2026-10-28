@@ -1,0 +1,22 @@
+
+Alex Morgan
+Computer Engineering Graduate
+
+SKILLS
+Python, SQL, FastAPI, PostgreSQL, Git, REST APIs, Docker
+
+EDUCATION
+Bachelor's Degree in Computer Engineering
+
+EXPERIENCE
+Software Development Intern
+
+Developed REST API endpoints using Python and FastAPI.
+Designed PostgreSQL database tables and SQL queries.
+Implemented user authentication and backend services.
+Used Git for version control and collaborated with developers.
+
+PROJECTS
+Built a student management API using FastAPI and PostgreSQL.
+Created database models, tested API endpoints, and implemented JWT authentication.
+

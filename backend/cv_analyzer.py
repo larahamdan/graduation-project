@@ -17,6 +17,7 @@ SKILLS = [
     "C++",
     "Machine Learning",
     "Data Analysis",
+    "Statistics",
 ]
 
 EDUCATION = [
@@ -197,7 +198,7 @@ SKILL_ALIASES = {
     "React": ["React", "React.js", "ReactJS"],
     "FastAPI": ["FastAPI"],
     "Machine Learning": ["Machine Learning", "ML"],
-    "Microsoft Excel": ["Microsoft Excel", "MS Excel", "Excel"],
+    "Excel": ["Excel", "Microsoft Excel", "MS Excel"],
     "Power BI": ["Power BI", "PowerBI"],
     "Docker": ["Docker"]
 }

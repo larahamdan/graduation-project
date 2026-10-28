@@ -1,0 +1,22 @@
+
+Taylor Reed
+Data Analyst
+
+EDUCATION
+Bachelor's Degree in Statistics
+
+SKILLS
+Python, SQL, Excel, Power BI, Data Analysis, Statistics
+
+EXPERIENCE
+Data Analyst Intern
+
+Cleaned and analyzed business datasets using Python and SQL.
+Created interactive Power BI dashboards.
+Used Excel pivot tables and formulas to prepare reports.
+Identified customer trends and presented findings to management.
+
+PROJECTS
+Built a sales analytics dashboard using Power BI.
+Analyzed sales performance and customer behavior using Python.
+Created weekly business reports and data visualizations.
