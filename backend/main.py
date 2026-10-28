@@ -12,6 +12,11 @@ from models import Student, User
 from career_recommender import recommend_careers
 from models import CVAnalysis
 
+from learning_roadmap import generate_roadmap
+from career_recommender import recommend_careers
+from models import Student, CVAnalysis, User
+
+
 
 app = FastAPI(title="CareerPath AI")
 app.add_middleware(
@@ -138,3 +143,78 @@ def get_career_recommendations(
         "total_careers": len(recommendations),
         "recommendations": recommendations[:5]
     }
+
+
+
+@app.get("/careers/roadmap")
+def get_learning_roadmap(
+    career: str,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    # Get the logged-in user's student profile
+    student = db.query(Student).filter(
+        Student.user_id == current_user.id
+    ).first()
+
+    if student is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Student profile not found. Please create a profile first."
+        )
+
+    if student.weekly_study_hours <= 0:
+        raise HTTPException(
+            status_code=400,
+            detail="Weekly study hours must be greater than zero."
+        )
+
+    # Get the user's latest CV analysis
+    latest_cv = (
+        db.query(CVAnalysis)
+        .filter(CVAnalysis.user_id == current_user.id)
+        .order_by(
+            CVAnalysis.created_at.desc(),
+            CVAnalysis.id.desc()
+        )
+        .first()
+    )
+
+    if latest_cv is None:
+        raise HTTPException(
+            status_code=404,
+            detail="No CV analysis found. Please upload a CV first."
+        )
+
+    # Find the requested career
+    recommendations = recommend_careers(latest_cv.skills or [])
+
+    selected_career = next(
+        (
+            item for item in recommendations
+            if item["career"].casefold() == career.strip().casefold()
+        ),
+        None
+    )
+
+    if selected_career is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Career not found."
+        )
+
+    # Build the roadmap using missing skills
+    roadmap = generate_roadmap(
+        selected_career["missing_skills"],
+        student.weekly_study_hours
+    )
+
+    return {
+        "career": selected_career["career"],
+        "analysis_id": latest_cv.id,
+        "match_percentage": selected_career["match_percentage"],
+        "matching_skills": selected_career["matching_skills"],
+        "missing_skills": selected_career["missing_skills"],
+        "learning_plan": roadmap
+    }
+
