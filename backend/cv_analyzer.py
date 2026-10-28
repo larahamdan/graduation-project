@@ -168,9 +168,63 @@ def find_matches(text: str, keywords: list[str]) -> list[str]:
     return matches
 
 
+
 def analyze_cv(text: str) -> dict:
+    detected_skills = find_matches(text, SKILLS)
+
+    # Search for alternative skill names in the CV text
+    for standard_name, aliases in SKILL_ALIASES.items():
+        for alias in aliases:
+            pattern = r"(?<!\w)" + re.escape(alias) + r"(?!\w)"
+
+            if re.search(pattern, text, re.IGNORECASE):
+                detected_skills.append(standard_name)
+                break
+
     return {
-        "skills": find_matches(text, SKILLS),
+        "skills": normalize_skills(detected_skills),
         "education": find_matches(text, EDUCATION),
         "experience": find_matches(text, EXPERIENCE),
     }
+
+
+# Different names that refer to the same skill
+SKILL_ALIASES = {
+    "JavaScript": ["JavaScript", "JS"],
+    "Python": ["Python", "Python 3"],
+    "SQL": ["SQL", "PostgreSQL", "MySQL"],
+    "Git": ["Git", "GitHub"],
+    "React": ["React", "React.js", "ReactJS"],
+    "FastAPI": ["FastAPI"],
+    "Machine Learning": ["Machine Learning", "ML"],
+    "Microsoft Excel": ["Microsoft Excel", "MS Excel", "Excel"],
+    "Power BI": ["Power BI", "PowerBI"],
+    "Docker": ["Docker"]
+}
+
+
+def normalize_skills(skills: list[str]) -> list[str]:
+    normalized = []
+    seen = set()
+
+    for skill in skills:
+        if not isinstance(skill, str):
+            continue
+
+        cleaned = skill.strip()
+
+        for standard_name, aliases in SKILL_ALIASES.items():
+            if cleaned.casefold() in {
+                alias.casefold() for alias in aliases
+            }:
+                cleaned = standard_name
+                break
+
+        key = cleaned.casefold()
+
+        if cleaned and key not in seen:
+            normalized.append(cleaned)
+            seen.add(key)
+
+    return normalized
+

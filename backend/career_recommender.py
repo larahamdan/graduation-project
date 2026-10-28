@@ -1,5 +1,7 @@
 
 # CareerPath AI - Career Recommendation System
+from cv_analyzer import normalize_skills
+
 
 CAREER_ROLES = {
     "Backend Developer": [
@@ -78,11 +80,11 @@ CAREER_ROLES = {
 
 
 def recommend_careers(student_skills):
-    # Normalize skills for case-insensitive matching
+    normalized_skills = normalize_skills(student_skills)
+
     student_skills_set = {
-        skill.strip().casefold()
-        for skill in student_skills
-        if isinstance(skill, str) and skill.strip()
+        skill.casefold()
+        for skill in normalized_skills
     }
 
     recommendations = []

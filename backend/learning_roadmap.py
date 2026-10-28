@@ -135,7 +135,139 @@ SKILL_LEARNING_PLANS = {
             "Regression fundamentals"
         ],
         "estimated_hours": 35
-    }
+    },
+    
+    "Linux": {
+        "topics": [
+            "Linux file system and terminal",
+            "Basic shell commands",
+            "Users and permissions",
+            "Process and package management",
+            "Basic shell scripting"
+        ],
+        "estimated_hours": 25
+    },
+
+    "Kubernetes": {
+        "topics": [
+            "Container orchestration fundamentals",
+            "Pods and deployments",
+            "Services and networking",
+            "Configuration and secrets",
+            "Deploy a small application"
+        ],
+        "estimated_hours": 35
+    },
+
+    "Power BI": {
+        "topics": [
+            "Import and clean datasets",
+            "Power Query fundamentals",
+            "Data modeling",
+            "DAX basics",
+            "Build an interactive dashboard"
+        ],
+        "estimated_hours": 30
+    },
+
+    "Data Analysis": {
+        "topics": [
+            "Data cleaning",
+            "Exploratory data analysis",
+            "Data visualization",
+            "Basic statistical analysis",
+            "Complete a data analysis project"
+        ],
+        "estimated_hours": 30
+    },
+
+    "MATLAB": {
+        "topics": [
+            "MATLAB interface and syntax",
+            "Vectors and matrices",
+            "Functions and scripts",
+            "Data visualization",
+            "Engineering simulations"
+        ],
+        "estimated_hours": 30
+    },
+
+    "PLC": {
+        "topics": [
+            "PLC fundamentals",
+            "Digital inputs and outputs",
+            "Ladder logic programming",
+            "Timers and counters",
+            "Basic industrial automation project"
+        ],
+        "estimated_hours": 35
+    },
+
+    "Control Systems": {
+        "topics": [
+            "Control system fundamentals",
+            "Transfer functions",
+            "Feedback systems",
+            "PID controllers",
+            "Control simulation project"
+        ],
+        "estimated_hours": 40
+    },
+
+    "Microcontrollers": {
+        "topics": [
+            "Microcontroller architecture",
+            "Digital and analog I/O",
+            "Timers and interrupts",
+            "Communication protocols",
+            "Build a microcontroller project"
+        ],
+        "estimated_hours": 35
+    },
+
+    "Networking": {
+        "topics": [
+            "Network fundamentals",
+            "TCP/IP and OSI models",
+            "IP addressing and subnetting",
+            "Routing and switching",
+            "Network troubleshooting"
+        ],
+        "estimated_hours": 30
+    },
+
+    "Cybersecurity": {
+        "topics": [
+            "Security fundamentals",
+            "Common threats and vulnerabilities",
+            "Authentication and encryption",
+            "Network security basics",
+            "Defensive security exercises"
+        ],
+        "estimated_hours": 40
+    },
+
+    "Figma": {
+        "topics": [
+            "Figma interface and tools",
+            "Frames and components",
+            "Auto Layout",
+            "Interactive prototypes",
+            "Design a mobile application interface"
+        ],
+        "estimated_hours": 20
+    },
+
+    "Project Management": {
+        "topics": [
+            "Project planning fundamentals",
+            "Scope and requirements",
+            "Scheduling and milestones",
+            "Risk management",
+            "Create a project plan"
+        ],
+        "estimated_hours": 25
+    },
 }
 
 
