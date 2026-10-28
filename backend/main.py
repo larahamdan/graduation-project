@@ -9,6 +9,9 @@ from cv import router as cv_router
 from database import get_db
 from models import Student, User
 
+from career_recommender import recommend_careers
+from models import CVAnalysis
+
 
 app = FastAPI(title="CareerPath AI")
 app.add_middleware(
@@ -102,4 +105,36 @@ def get_student(
         "skills": student.skills,
         "target_role": student.target_role,
         "weekly_study_hours": student.weekly_study_hours
+    }
+
+
+@app.get("/careers/recommendations")
+def get_career_recommendations(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    # Find the logged-in user's most recent CV analysis
+    latest_cv = (
+        db.query(CVAnalysis)
+        .filter(CVAnalysis.user_id == current_user.id)
+        .order_by(
+            CVAnalysis.created_at.desc(),
+            CVAnalysis.id.desc()
+        )
+        .first()
+    )
+
+    if latest_cv is None:
+        raise HTTPException(
+            status_code=404,
+            detail="No CV analysis found. Please upload a CV first."
+        )
+
+    recommendations = recommend_careers(latest_cv.skills or [])
+
+    return {
+        "analysis_id": latest_cv.id,
+        "skills_used": latest_cv.skills,
+        "total_careers": len(recommendations),
+        "recommendations": recommendations[:5]
     }
