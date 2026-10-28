@@ -16,6 +16,7 @@ from learning_roadmap import generate_roadmap
 from career_recommender import recommend_careers
 from models import Student, CVAnalysis, User
 
+from hybrid_recommender import recommend_careers_hybrid
 
 
 app = FastAPI(title="CareerPath AI")
@@ -216,5 +217,43 @@ def get_learning_roadmap(
         "matching_skills": selected_career["matching_skills"],
         "missing_skills": selected_career["missing_skills"],
         "learning_plan": roadmap
+    }
+
+
+@app.get("/careers/ai-recommendations")
+def get_ai_career_recommendations(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    # Get the logged-in user's latest CV analysis
+    latest_cv = (
+        db.query(CVAnalysis)
+        .filter(CVAnalysis.user_id == current_user.id)
+        .order_by(
+            CVAnalysis.created_at.desc(),
+            CVAnalysis.id.desc()
+        )
+        .first()
+    )
+
+    if latest_cv is None:
+        raise HTTPException(
+            status_code=404,
+            detail="No CV analysis found. Please upload a CV first."
+        )
+
+    # Combine AI similarity and skill matching
+    recommendations = recommend_careers_hybrid(
+        cv_text=latest_cv.extracted_text,
+        student_skills=latest_cv.skills or [],
+        top_n=5
+    )
+
+    return {
+        "analysis_id": latest_cv.id,
+        "model_type": "hybrid_ai",
+        "skills_used": latest_cv.skills,
+        "total_recommendations": len(recommendations),
+        "recommendations": recommendations
     }
 
