@@ -50,3 +50,40 @@ def test_data_analyst_cv_recommends_data_analyst():
     assert len(results) == 5
     assert results[0]["career"] == "Data Analyst"
     assert results[0]["skill_match_percentage"] == 100.0
+
+
+def test_electrical_engineer_cv_recommends_electrical_engineer():
+    cv_path = (
+        Path(__file__).resolve().parent
+        / "sample_electrical_engineer_cv.txt"
+    )
+
+    text = cv_path.read_text(encoding="utf-8")
+    analysis = analyze_cv(text)
+
+    expected_skills = {
+        "MATLAB",
+        "Simulink",
+        "Circuit Design",
+        "Electronics",
+        "PCB Design",
+        "Arduino",
+        "C Programming",
+        "PLC",
+        "Electrical Systems",
+        "Control Systems",
+        "AutoCAD",
+    }
+
+    assert expected_skills.issubset(set(analysis["skills"]))
+
+    results = recommend_careers_hybrid(
+        cv_text=text,
+        student_skills=analysis["skills"],
+        top_n=5,
+    )
+
+    assert len(results) == 5
+    assert results[0]["career"] == "Electrical Engineer"
+    assert results[0]["skill_match_percentage"] == 80.0
+

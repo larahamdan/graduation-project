@@ -1,0 +1,37 @@
+
+Alex Carter
+Electrical and Electronics Engineering Graduate
+
+EDUCATION
+Bachelor of Science in Electrical and Electronics Engineering
+
+TECHNICAL SKILLS
+MATLAB, Simulink, Circuit Design, Electronics,
+PCB Design, Arduino, C Programming, PLC,
+Electrical Systems, Control Systems, AutoCAD
+
+WORK EXPERIENCE
+Electrical Engineering Intern
+
+- Designed and simulated electrical circuits using MATLAB and Simulink.
+- Assisted in troubleshooting electrical control panels and power distribution systems.
+- Worked with PLC-based industrial automation systems.
+- Performed circuit measurements using oscilloscopes and multimeters.
+- Assisted engineers with electrical wiring diagrams and circuit documentation.
+
+ACADEMIC PROJECTS
+1. Smart Industrial Motor Control System
+Designed a motor control system using PLC programming,
+sensors, and electrical control circuits.
+
+2. Arduino-Based Power Monitoring System
+Built a system to monitor voltage and current using
+Arduino and electronic sensors.
+
+3. Electronic Circuit Design
+Designed and tested analog electronic circuits,
+including amplifiers and filtering circuits.
+
+CAREER INTERESTS
+Electrical Engineering, Industrial Automation,
+Embedded Systems, and Control Systems.

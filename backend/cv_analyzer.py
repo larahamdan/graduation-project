@@ -18,7 +18,40 @@ SKILLS = [
     "Machine Learning",
     "Data Analysis",
     "Statistics",
+    
+    # Programming and software development
+    "Python",
+    "Java",
+    "JavaScript",
+    "SQL",
+    "HTML",
+    "CSS",
+    "FastAPI",
+    "Django",
+    "React",
+    "Git",
+    "Docker",
+    "C++",
+
+    # Data science and analytics
+    "Machine Learning",
+    "Data Analysis",
+    "Statistics",
+
+    # Electrical and electronics engineering
+    "MATLAB",
+    "Simulink",
+    "Circuit Design",
+    "Electronics",
+    "PCB Design",
+    "Arduino",
+    "C Programming",
+    "PLC",
+    "Electrical Systems",
+    "Control Systems",
+    "AutoCAD",
 ]
+
 
 EDUCATION = [
     "Computer Engineering",
@@ -154,6 +187,8 @@ EXPERIENCE = [
     "Research Intern",
     "Trainee",
     "Graduate Trainee",
+
+
 ]
 
 
