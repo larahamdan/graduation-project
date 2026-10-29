@@ -225,6 +225,7 @@ def analyze_cv(text: str) -> dict:
 
 
 # Different names that refer to the same skill
+
 SKILL_ALIASES = {
     "JavaScript": ["JavaScript", "JS"],
     "Python": ["Python", "Python 3"],
@@ -235,8 +236,10 @@ SKILL_ALIASES = {
     "Machine Learning": ["Machine Learning", "ML"],
     "Excel": ["Excel", "Microsoft Excel", "MS Excel"],
     "Power BI": ["Power BI", "PowerBI"],
-    "Docker": ["Docker"]
+    "Docker": ["Docker"],
+    "C": ["C", "C Programming", "C Language"],
 }
+
 
 
 def normalize_skills(skills: list[str]) -> list[str]:
